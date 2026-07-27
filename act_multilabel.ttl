@@ -1,0 +1,464 @@
+@prefix at:   <https://w3id.org/act/taxonomy#> .
+@prefix act:  <https://w3id.org/act/ontology#> .
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+#
+# act_multilabel.ttl (v0.6-draft) — expressions mapping to 2+ ActionTypes.
+# Separate file so multilabels can be listed/queried and both dictionary- and
+# classifier-derived entries can coexist. Temporary namespace (Protégé default).
+#
+at:MultilabelEntry rdf:type owl:Class ; rdfs:label "Multilabel Entry"@en .
+at:expression    rdf:type owl:DatatypeProperty ; rdfs:domain at:MultilabelEntry .
+at:hasActionType rdf:type owl:ObjectProperty ; rdfs:domain at:MultilabelEntry ; rdfs:range act:ActionType .
+at:branchType    rdf:type owl:DatatypeProperty ; rdfs:domain at:MultilabelEntry .
+at:source        rdf:type owl:DatatypeProperty ; rdfs:domain at:MultilabelEntry .
+
+at:ml_001 rdf:type at:MultilabelEntry ;
+    at:expression "主導" ;
+    at:hasActionType at:General , at:Accession ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_002 rdf:type at:MultilabelEntry ;
+    at:expression "交渉開始" ;
+    at:hasActionType at:DiplomaticNegotiation , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_003 rdf:type at:MultilabelEntry ;
+    at:expression "伝道開始" ;
+    at:hasActionType at:CulturalExpression , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_004 rdf:type at:MultilabelEntry ;
+    at:expression "侵略" ;
+    at:hasActionType at:MilitaryAttack , at:ConquestOccupation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_005 rdf:type at:MultilabelEntry ;
+    at:expression "保護国化" ;
+    at:hasActionType at:ConquestOccupation , at:Transformation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_006 rdf:type at:MultilabelEntry ;
+    at:expression "倒す" ;
+    at:hasActionType at:MilitaryAttack , at:Victory ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_007 rdf:type at:MultilabelEntry ;
+    at:expression "入城" ;
+    at:hasActionType at:MilitaryAttack , at:ConquestOccupation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_008 rdf:type at:MultilabelEntry ;
+    at:expression "再即位" ;
+    at:hasActionType at:Accession , at:Repetition ;
+    at:branchType "affixSai" ;
+    at:source "dictionary" .
+at:ml_009 rdf:type at:MultilabelEntry ;
+    at:expression "再奪回" ;
+    at:hasActionType at:MilitaryAttack , at:Release , at:Repetition ;
+    at:branchType "affixSai" ;
+    at:source "dictionary" .
+at:ml_010 rdf:type at:MultilabelEntry ;
+    at:expression "再建" ;
+    at:hasActionType at:Revival , at:Repetition ;
+    at:branchType "affixSai" ;
+    at:source "dictionary" .
+at:ml_011 rdf:type at:MultilabelEntry ;
+    at:expression "再独立" ;
+    at:hasActionType at:IndependenceSeparation , at:Repetition ;
+    at:branchType "affixSai" ;
+    at:source "dictionary" .
+at:ml_012 rdf:type at:MultilabelEntry ;
+    at:expression "再結成" ;
+    at:hasActionType at:Foundation , at:Repetition ;
+    at:branchType "affixSai" ;
+    at:source "dictionary" .
+at:ml_013 rdf:type at:MultilabelEntry ;
+    at:expression "再統一" ;
+    at:hasActionType at:Foundation , at:Revival , at:Repetition ;
+    at:branchType "affixSai" ;
+    at:source "dictionary" .
+at:ml_014 rdf:type at:MultilabelEntry ;
+    at:expression "再興" ;
+    at:hasActionType at:Revival , at:Repetition ;
+    at:branchType "affixSai" ;
+    at:source "dictionary" .
+at:ml_015 rdf:type at:MultilabelEntry ;
+    at:expression "再襲来" ;
+    at:hasActionType at:MilitaryAttack , at:Repetition ;
+    at:branchType "affixSai" ;
+    at:source "dictionary" .
+at:ml_016 rdf:type at:MultilabelEntry ;
+    at:expression "再認定" ;
+    at:hasActionType at:Authorization , at:Repetition ;
+    at:branchType "affixSai" ;
+    at:source "dictionary" .
+at:ml_017 rdf:type at:MultilabelEntry ;
+    at:expression "再開" ;
+    at:hasActionType at:Beginning , at:Repetition ;
+    at:branchType "affixSai" ;
+    at:source "dictionary" .
+at:ml_018 rdf:type at:MultilabelEntry ;
+    at:expression "分割民営化" ;
+    at:hasActionType at:Transformation , at:Legislation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_019 rdf:type at:MultilabelEntry ;
+    at:expression "加入" ;
+    at:hasActionType at:TreatyAgreement , at:Foundation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_020 rdf:type at:MultilabelEntry ;
+    at:expression "加盟" ;
+    at:hasActionType at:TreatyAgreement , at:Foundation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_021 rdf:type at:MultilabelEntry ;
+    at:expression "勃発" ;
+    at:hasActionType at:Beginning , at:DisputeConflict ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_022 rdf:type at:MultilabelEntry ;
+    at:expression "南下開始" ;
+    at:hasActionType at:MilitaryAttack , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_023 rdf:type at:MultilabelEntry ;
+    at:expression "合併" ;
+    at:hasActionType at:ConquestOccupation , at:Foundation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_024 rdf:type at:MultilabelEntry ;
+    at:expression "国外追放" ;
+    at:hasActionType at:CaptureAndPunishment , at:Suppression ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_025 rdf:type at:MultilabelEntry ;
+    at:expression "国外追放開始" ;
+    at:hasActionType at:CaptureAndPunishment , at:Suppression , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_026 rdf:type at:MultilabelEntry ;
+    at:expression "国有化" ;
+    at:hasActionType at:Transformation , at:Legislation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_027 rdf:type at:MultilabelEntry ;
+    at:expression "国王独裁開始" ;
+    at:hasActionType at:Accession , at:Suppression , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_028 rdf:type at:MultilabelEntry ;
+    at:expression "大暴落" ;
+    at:hasActionType at:TradeEconomy , at:DeEscalation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_029 rdf:type at:MultilabelEntry ;
+    at:expression "失う" ;
+    at:hasActionType at:General , at:Defeat ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_030 rdf:type at:MultilabelEntry ;
+    at:expression "奪回" ;
+    at:hasActionType at:MilitaryAttack , at:Release ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_031 rdf:type at:MultilabelEntry ;
+    at:expression "奪還" ;
+    at:hasActionType at:MilitaryAttack , at:Release ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_032 rdf:type at:MultilabelEntry ;
+    at:expression "嫁ぐ" ;
+    at:hasActionType at:General , at:DiplomaticNegotiation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_033 rdf:type at:MultilabelEntry ;
+    at:expression "完成" ;
+    at:hasActionType at:Success , at:ConstructionProduction ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_034 rdf:type at:MultilabelEntry ;
+    at:expression "実施開始" ;
+    at:hasActionType at:Legislation , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_035 rdf:type at:MultilabelEntry ;
+    at:expression "宣戦" ;
+    at:hasActionType at:Declaration , at:DisputeConflict ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_036 rdf:type at:MultilabelEntry ;
+    at:expression "宣戦布告" ;
+    at:hasActionType at:Declaration , at:DisputeConflict ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_037 rdf:type at:MultilabelEntry ;
+    at:expression "審議" ;
+    at:hasActionType at:General , at:Legislation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_038 rdf:type at:MultilabelEntry ;
+    at:expression "帝政宣言" ;
+    at:hasActionType at:Declaration , at:Accession ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_039 rdf:type at:MultilabelEntry ;
+    at:expression "平定" ;
+    at:hasActionType at:Victory , at:ConquestOccupation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_040 rdf:type at:MultilabelEntry ;
+    at:expression "建国宣言" ;
+    at:hasActionType at:Declaration , at:Foundation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_041 rdf:type at:MultilabelEntry ;
+    at:expression "建築開始" ;
+    at:hasActionType at:ConstructionProduction , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_042 rdf:type at:MultilabelEntry ;
+    at:expression "建設開始" ;
+    at:hasActionType at:ConstructionProduction , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_043 rdf:type at:MultilabelEntry ;
+    at:expression "弾圧激化" ;
+    at:hasActionType at:Suppression , at:Escalation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_044 rdf:type at:MultilabelEntry ;
+    at:expression "征服開始" ;
+    at:hasActionType at:MilitaryAttack , at:ConquestOccupation , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_045 rdf:type at:MultilabelEntry ;
+    at:expression "得る" ;
+    at:hasActionType at:ConquestOccupation , at:TradeEconomy ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_046 rdf:type at:MultilabelEntry ;
+    at:expression "採掘開始" ;
+    at:hasActionType at:TradeEconomy , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_047 rdf:type at:MultilabelEntry ;
+    at:expression "握る" ;
+    at:hasActionType at:General , at:Accession ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_048 rdf:type at:MultilabelEntry ;
+    at:expression "撃破" ;
+    at:hasActionType at:MilitaryAttack , at:Victory ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_049 rdf:type at:MultilabelEntry ;
+    at:expression "撃退" ;
+    at:hasActionType at:MilitaryAttack , at:Victory ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_050 rdf:type at:MultilabelEntry ;
+    at:expression "撤兵" ;
+    at:hasActionType at:Defeat , at:Release ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_051 rdf:type at:MultilabelEntry ;
+    at:expression "撤廃" ;
+    at:hasActionType at:Release , at:Suspension ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_052 rdf:type at:MultilabelEntry ;
+    at:expression "撤退" ;
+    at:hasActionType at:Defeat , at:Release ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_053 rdf:type at:MultilabelEntry ;
+    at:expression "支配開始" ;
+    at:hasActionType at:ConquestOccupation , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_054 rdf:type at:MultilabelEntry ;
+    at:expression "改宗" ;
+    at:hasActionType at:Transformation , at:CulturalExpression ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_055 rdf:type at:MultilabelEntry ;
+    at:expression "放棄" ;
+    at:hasActionType at:Suspension , at:Abdication ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_056 rdf:type at:MultilabelEntry ;
+    at:expression "未遂" ;
+    at:hasActionType at:Failure , at:AssassinationMassacre ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_057 rdf:type at:MultilabelEntry ;
+    at:expression "正常化" ;
+    at:hasActionType at:DiplomaticNegotiation , at:TreatyAgreement ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_058 rdf:type at:MultilabelEntry ;
+    at:expression "流行" ;
+    at:hasActionType at:CulturalExpression , at:General ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_059 rdf:type at:MultilabelEntry ;
+    at:expression "海戦" ;
+    at:hasActionType at:DisputeConflict , at:MilitaryAttack ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_060 rdf:type at:MultilabelEntry ;
+    at:expression "浸透進む" ;
+    at:hasActionType at:Transformation , at:CulturalExpression ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_061 rdf:type at:MultilabelEntry ;
+    at:expression "独立宣言" ;
+    at:hasActionType at:Declaration , at:IndependenceSeparation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_062 rdf:type at:MultilabelEntry ;
+    at:expression "独立運動" ;
+    at:hasActionType at:ResistanceProtest , at:IndependenceSeparation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_063 rdf:type at:MultilabelEntry ;
+    at:expression "獲得" ;
+    at:hasActionType at:ConquestOccupation , at:TradeEconomy ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_064 rdf:type at:MultilabelEntry ;
+    at:expression "略奪" ;
+    at:hasActionType at:TradeEconomy , at:MilitaryAttack ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_065 rdf:type at:MultilabelEntry ;
+    at:expression "発行" ;
+    at:hasActionType at:CulturalExpression , at:TradeEconomy ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_066 rdf:type at:MultilabelEntry ;
+    at:expression "発行する" ;
+    at:hasActionType at:CulturalExpression , at:TradeEconomy ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_067 rdf:type at:MultilabelEntry ;
+    at:expression "発行開始" ;
+    at:hasActionType at:CulturalExpression , at:TradeEconomy , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_068 rdf:type at:MultilabelEntry ;
+    at:expression "破る" ;
+    at:hasActionType at:MilitaryAttack , at:Victory ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_069 rdf:type at:MultilabelEntry ;
+    at:expression "破産" ;
+    at:hasActionType at:TradeEconomy , at:Dissolution ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_070 rdf:type at:MultilabelEntry ;
+    at:expression "粛清" ;
+    at:hasActionType at:AssassinationMassacre , at:Suppression ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_071 rdf:type at:MultilabelEntry ;
+    at:expression "終わる" ;
+    at:hasActionType at:Dissolution , at:Suspension ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_072 rdf:type at:MultilabelEntry ;
+    at:expression "終結" ;
+    at:hasActionType at:Dissolution , at:Suspension ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_073 rdf:type at:MultilabelEntry ;
+    at:expression "終結宣言" ;
+    at:hasActionType at:Declaration , at:Suspension ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_074 rdf:type at:MultilabelEntry ;
+    at:expression "結婚" ;
+    at:hasActionType at:General , at:DiplomaticNegotiation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_075 rdf:type at:MultilabelEntry ;
+    at:expression "自治領化" ;
+    at:hasActionType at:ConquestOccupation , at:IndependenceSeparation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_076 rdf:type at:MultilabelEntry ;
+    at:expression "西伝" ;
+    at:hasActionType at:CulturalExpression , at:Movement ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_077 rdf:type at:MultilabelEntry ;
+    at:expression "親政開始" ;
+    at:hasActionType at:Accession , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_078 rdf:type at:MultilabelEntry ;
+    at:expression "解除" ;
+    at:hasActionType at:Release , at:Suspension ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_079 rdf:type at:MultilabelEntry ;
+    at:expression "貿易開始" ;
+    at:hasActionType at:TradeEconomy , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_080 rdf:type at:MultilabelEntry ;
+    at:expression "追放" ;
+    at:hasActionType at:CaptureAndPunishment , at:Suppression ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_081 rdf:type at:MultilabelEntry ;
+    at:expression "通貨改革" ;
+    at:hasActionType at:Legislation , at:TradeEconomy ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_082 rdf:type at:MultilabelEntry ;
+    at:expression "進出開始" ;
+    at:hasActionType at:MilitaryAttack , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_083 rdf:type at:MultilabelEntry ;
+    at:expression "遠征開始" ;
+    at:hasActionType at:MilitaryAttack , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_084 rdf:type at:MultilabelEntry ;
+    at:expression "開発" ;
+    at:hasActionType at:ConstructionProduction , at:ScientificInvention ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_085 rdf:type at:MultilabelEntry ;
+    at:expression "院政開始" ;
+    at:hasActionType at:Accession , at:Beginning ;
+    at:branchType "affixKaishi" ;
+    at:source "dictionary" .
+at:ml_086 rdf:type at:MultilabelEntry ;
+    at:expression "陥落" ;
+    at:hasActionType at:MilitaryAttack , at:Defeat ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_087 rdf:type at:MultilabelEntry ;
+    at:expression "離脱" ;
+    at:hasActionType at:ConflictRupture , at:IndependenceSeparation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_088 rdf:type at:MultilabelEntry ;
+    at:expression "非合法化" ;
+    at:hasActionType at:Suppression , at:Legislation ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .
+at:ml_089 rdf:type at:MultilabelEntry ;
+    at:expression "駆逐" ;
+    at:hasActionType at:MilitaryAttack , at:Suppression ;
+    at:branchType "genuine" ;
+    at:source "dictionary" .

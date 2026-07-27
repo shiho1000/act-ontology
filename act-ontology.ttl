@@ -1,0 +1,306 @@
+@prefix :     <https://w3id.org/act/ontology#> .
+@prefix act:  <https://w3id.org/act/ontology#> .
+@prefix owl:  <http://www.w3.org/2002/07/owl#> .
+@prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix sem:  <https://semanticweb.cs.vu.nl/2009/11/sem/> .
+@prefix wdt:  <http://www.wikidata.org/prop/direct/> .
+@prefix crm:  <http://www.cidoc-crm.org/cidoc-crm/> .
+@base <https://w3id.org/act/ontology#> .
+
+#################################################################
+#    Ontology declaration
+#################################################################
+
+<https://w3id.org/act/>
+    rdf:type owl:Ontology ;
+    owl:versionIRI <https://w3id.org/act/0.6> ;
+    owl:versionInfo "0.6" ;
+    rdfs:label "ACT Ontology"@en ;
+    rdfs:label "ACTオントロジー"@ja ;
+    rdfs:comment """Action-Centric Ontology for Historical Event Knowledge Graphs. v0.6."""@en .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  Root
+
+:Entity rdf:type owl:Class ;
+    rdfs:label "Entity"@en ;
+    rdfs:comment "Top-level class for all historical entities in the ACT ontology."@en .
+
+###  Event
+
+:Event rdf:type owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Event"@en ;
+    rdfs:comment "A historical occurrence. Thematic roles (Agent, Patient, Theme, Place, Territory) are expressed via object properties on Event. No intermediate role classes."@en ;
+    skos:exactMatch sem:Event .
+
+:EventDispute rdf:type owl:Class ;
+    rdfs:subClassOf :Event ;
+    rdfs:label "Event Dispute"@en ;
+    rdfs:comment "A conflictual event involving opposing parties (e.g. wars, battles, armed conflicts)."@en .
+
+###  ActionType
+
+:ActionType rdf:type owl:Class ;
+    rdfs:label "Action Type"@en ;
+    rdfs:comment "Class whose instances represent action classification categories. Instances (NamedIndividuals / skos:Concepts) are defined in act-taxonomy.ttl. ETL assigns one individual per Event via :hasActionType."@en .
+
+###  Actor hierarchy
+
+:Actor rdf:type owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Actor"@en ;
+    rdfs:comment "A human or collective agent participating in historical events."@en ;
+    skos:exactMatch sem:Actor .
+
+:ActorPerson rdf:type owl:Class ;
+    rdfs:subClassOf :Actor ;
+    rdfs:label "Actor Person"@en ;
+    rdfs:comment "An individual historical person."@en .
+
+:ActorGroup rdf:type owl:Class ;
+    rdfs:subClassOf :Actor ;
+    rdfs:label "Actor Group"@en ;
+    rdfs:comment "A collective actor: state, dynasty, organisation, alliance, etc."@en .
+
+:actor.group.polity rdf:type owl:Class ;
+    rdfs:subClassOf :ActorGroup ;
+    rdfs:label "Actor Group Polity"@en ;
+    rdfs:comment "A political entity with territorial sovereignty (empire, kingdom, republic, etc.)."@en .
+
+:actor.group.polity.dynasty rdf:type owl:Class ;
+    rdfs:subClassOf :actor.group.polity ;
+    rdfs:label "Actor Group Polity Dynasty"@en ;
+    rdfs:comment "A ruling dynasty as a political entity."@en .
+
+###  Space hierarchy
+
+:Space rdf:type owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Space"@en ;
+    rdfs:comment "A geographic or spatial entity."@en ;
+    skos:broadMatch sem:Place .
+
+:SpacePlace rdf:type owl:Class ;
+    rdfs:subClassOf :Space ;
+    rdfs:label "Space Place"@en ;
+    rdfs:comment "A named geographic location, optionally with WGS84 coordinates."@en .
+
+###  Thing hierarchy
+
+:Thing rdf:type owl:Class ;
+    rdfs:subClassOf :Entity ;
+    rdfs:label "Thing"@en ;
+    rdfs:comment "A physical or conceptual thing. Superclass of ThingArtifact and ThingConcept."@en .
+
+:ThingArtifact rdf:type owl:Class ;
+    rdfs:subClassOf :Thing ;
+    rdfs:label "Thing Artifact"@en ;
+    rdfs:comment "A material or cultural artifact (e.g. a weapon, a ship, a building as object)."@en .
+
+:ThingConcept rdf:type owl:Class ;
+    rdfs:subClassOf :Thing ;
+    rdfs:label "Thing Concept"@en ;
+    rdfs:comment "An abstract concept (e.g. imperial title, treaty, ideology) serving as the theme of an Event."@en .
+
+###  Reference
+
+:Reference rdf:type owl:Class ;
+    rdfs:label "Reference"@en ;
+    rdfs:comment "A source document from which historical events are extracted (e.g. textbook, encyclopaedia). Provenance layer: not a historical entity. Used to filter events by source and detect corpus bias."@en ;
+    skos:closeMatch prov:Entity .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  Event → thematic role properties
+
+:hasAgent rdf:type owl:ObjectProperty ;
+    rdfs:label "has agent"@en ;
+    rdfs:comment "Links an Event to an Actor individual acting as the volitional initiator of the action (SRL: Agent). 0..*."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  :Actor ;
+    skos:exactMatch sem:hasActor ;
+    skos:closeMatch crm:P14_carried_out_by .
+
+:hasPatient rdf:type owl:ObjectProperty ;
+    rdfs:label "has patient"@en ;
+    rdfs:comment "Links an Event to an Actor or Space individual that undergoes a state change as the direct object of the action (SRL: Patient). Range: Actor ∪ Space. 0..*. Separated from hasTheme in v0.6."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  [ rdf:type owl:Class ;
+                  owl:unionOf ( :Actor :Space ) ] ;
+    skos:broadMatch sem:hasActor .
+
+:hasTheme rdf:type owl:ObjectProperty ;
+    rdfs:label "has theme"@en ;
+    rdfs:comment "Links an Event to an Event or Thing individual that is the thematic focus of the action without necessarily undergoing state change (SRL: Theme). Range: Event ∪ Thing. 0..*. Narrowed from :Entity in v0.6."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  [ rdf:type owl:Class ;
+                  owl:unionOf ( :Event :Thing ) ] .
+
+:hasThemeLabel rdf:type owl:DatatypeProperty ;
+    rdfs:label "has theme label"@en ;
+    rdfs:comment "Literal fallback for theme expressions that could not be resolved to an Entity (e.g. common nouns such as 'women' or 'Christians' without a Dewey ID). Complement to :hasTheme; used when Entity resolution fails so the expression is preserved in the graph rather than dropped. 0..*."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:string .
+
+:hasPlace rdf:type owl:ObjectProperty ;
+    rdfs:label "has place"@en ;
+    rdfs:comment "Links an Event to the Space where it occurred (0..1)."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  :Space ;
+    skos:exactMatch sem:hasPlace ;
+    skos:exactMatch crm:P7_took_place_at ;
+    skos:exactMatch wdt:P276 .
+
+:hasTerritory rdf:type owl:ObjectProperty ;
+    rdfs:label "has territory"@en ;
+    rdfs:comment "Links an Event to a broader geographic or political region within which it occurred. Range: SpacePlace ∪ actor.group.polity. 0..*."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  [ rdf:type owl:Class ;
+                  owl:unionOf ( :SpacePlace :actor.group.polity ) ] ;
+    skos:broadMatch sem:hasPlace ;
+    skos:closeMatch wdt:P131 .
+
+:hasActionType rdf:type owl:ObjectProperty ;
+    rdfs:label "has action type"@en ;
+    rdfs:comment "Links an Event to an ActionType individual defined in act-taxonomy.ttl (0..1). OWL 2 DL compliant: domain Event, range ActionType."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  :ActionType .
+
+:hasReference rdf:type owl:ObjectProperty ;
+    rdfs:label "has reference"@en ;
+    rdfs:comment "Links an Event to its source document (0..*). Provenance layer."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  :Reference ;
+    skos:closeMatch prov:wasDerivedFrom .
+
+###  Event–Event relations
+
+:hasSubEvent rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
+    rdfs:label "has sub-event"@en ;
+    rdfs:comment "Links an Event to a constituent sub-Event. Transitive. Inverse of :isSubEventOf."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  :Event ;
+    skos:exactMatch sem:hasSubEvent ;
+    skos:exactMatch crm:P9_consists_of .
+
+:isSubEventOf rdf:type owl:ObjectProperty ;
+    owl:inverseOf :hasSubEvent ;
+    rdfs:label "is sub-event of"@en ;
+    rdfs:domain :Event ;
+    rdfs:range  :Event .
+
+#################################################################
+#    Datatype Properties
+#################################################################
+
+:eventLabel rdf:type owl:DatatypeProperty ;
+    rdfs:label "event label"@en ;
+    rdfs:comment "Human-readable label of the event, typically in Japanese from the source text."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:string .
+
+:startDate rdf:type owl:DatatypeProperty ;
+    rdfs:label "start date"@en ;
+    rdfs:comment "Start date of the event. Mixed XSD types: xsd:gYear, xsd:gYearMonth, xsd:date. Range left open; enforced by SHACL."@en ;
+    rdfs:domain :Event .
+
+:endDate rdf:type owl:DatatypeProperty ;
+    rdfs:label "end date"@en ;
+    rdfs:comment "End date of the event. Mixed XSD types: xsd:gYear, xsd:gYearMonth, xsd:date."@en ;
+    rdfs:domain :Event .
+
+:startYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "start year"@en ;
+    rdfs:comment "Integer year extracted from startDate at ETL time. Use for temporal range filtering: FILTER(?startYear >= 1600 && ?startYear <= 1700)."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:integer .
+
+:endYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "end year"@en ;
+    rdfs:comment "Integer year extracted from endDate at ETL time."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:integer .
+
+:hasAction rdf:type owl:DatatypeProperty ;
+    rdfs:label "has action"@en ;
+    rdfs:comment "Original predicate verb string as extracted from the source text (Japanese). Preserves exact wording; :hasActionType provides the normalised classification."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:string .
+
+:hasManner rdf:type owl:DatatypeProperty ;
+    rdfs:label "has manner"@en ;
+    rdfs:comment "Manner adverbial extracted from source text (SRL: Manner). Stored as literal; Entity-level representation deferred to future work."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:string .
+
+:hasCause rdf:type owl:DatatypeProperty ;
+    rdfs:label "has cause"@en ;
+    rdfs:comment "Causal clause extracted from source text (SRL: Cause). Stored as literal; Entity-level representation deferred to future work."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:string .
+
+:hasPurpose rdf:type owl:DatatypeProperty ;
+    rdfs:label "has purpose"@en ;
+    rdfs:comment "Purpose clause extracted from source text (SRL: Purpose). Stored as literal; Entity-level representation deferred to future work."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:string .
+
+:hasInstrument rdf:type owl:DatatypeProperty ;
+    rdfs:label "has instrument"@en ;
+    rdfs:comment "Instrument phrase extracted from source text (SRL: Instrument). Stored as literal; Entity-level representation deferred to future work."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:string .
+
+:hasProbability rdf:type owl:DatatypeProperty ;
+    rdfs:label "has probability"@en ;
+    rdfs:comment "Certainty of the event record. Values: 'approximate' (date uncertain), absent = certain."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:string .
+
+:referenceTitle rdf:type owl:DatatypeProperty ;
+    rdfs:label "reference title"@en ;
+    rdfs:domain :Reference ;
+    rdfs:range  xsd:string .
+
+:referenceEdition rdf:type owl:DatatypeProperty ;
+    rdfs:label "reference edition"@en ;
+    rdfs:domain :Reference ;
+    rdfs:range  xsd:string .
+
+:referenceYear rdf:type owl:DatatypeProperty ;
+    rdfs:label "reference year"@en ;
+    rdfs:domain :Reference ;
+    rdfs:range  xsd:gYear .
+
+:referenceISBN rdf:type owl:DatatypeProperty ;
+    rdfs:label "reference ISBN"@en ;
+    rdfs:domain :Reference ;
+    rdfs:range  xsd:string .
+
+:lat rdf:type owl:DatatypeProperty ;
+    rdfs:label "latitude"@en ;
+    rdfs:comment "WGS84 latitude of a SpacePlace individual."@en ;
+    rdfs:domain :SpacePlace ;
+    rdfs:range  xsd:decimal .
+
+:long rdf:type owl:DatatypeProperty ;
+    rdfs:label "longitude"@en ;
+    rdfs:comment "WGS84 longitude of a SpacePlace individual."@en ;
+    rdfs:domain :SpacePlace ;
+    rdfs:range  xsd:decimal .
+
+###  Generated by ACT ontology design process (v0.6)
+###  NOTE: ActionType NamedIndividuals (37) are defined in act-taxonomy.ttl
+###  NOTE: namespace https://w3id.org/act/ is a placeholder pending w3id.org PR merge.
+###        Replace globally once persistent URI is confirmed.
