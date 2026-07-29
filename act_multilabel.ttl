@@ -1,15 +1,14 @@
 @prefix at:   <https://w3id.org/act/taxonomy#> .
 @prefix act:  <https://w3id.org/act/ontology#> .
-
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 #
-# act_multilabel.ttl (v0.6-draft) — expressions mapping to 2+ ActionTypes.
-# Separate file so multilabels can be listed/queried and both dictionary- and
-# classifier-derived entries can coexist. Temporary namespace (Protégé default).
+# act_multilabel.ttl (v0.6) — expressions mapping to 2+ ActionTypes.
+# Separate file so multilabels can be listed/queried and both dictionary-
+# and classifier-derived entries can coexist.
 #
 at:MultilabelEntry rdf:type owl:Class ; rdfs:label "Multilabel Entry"@en .
 at:expression    rdf:type owl:DatatypeProperty ; rdfs:domain at:MultilabelEntry .

@@ -22,14 +22,13 @@ at:ActionTypeScheme rdf:type skos:ConceptScheme ;
     dct:title "ACT ActionType Taxonomy"@en ;
     dct:title "ACT アクション類型タクソノミ"@ja ;
     skos:prefLabel "ACT ActionType Taxonomy"@en ;
-    owl:versionInfo "v0.6-draft" ;
-    dct:description """Action-Centric Thematic Annotation (ACT) taxonomy of action types for historical event knowledge graphs. Concepts are organized under 8 upper-level categories. Each ActionType is a skos:Concept; upper categories are also skos:Concept and serve as top concepts of this scheme."""@en ;
+    owl:versionInfo "1.0" ;
+    dct:description """A taxonomy of action types for historical event knowledge graphs. Concepts are organized under 8 upper-level categories. Each ActionType is a skos:Concept; upper categories are also skos:Concept and serve as top concepts of this scheme."""@en ;
     # --- Scheme-level editorial notes (surface these at the top of generated guidelines) ---
     skos:editorialNote """MULTILABEL: A separate resource (act_multilabel.ttl) records expressions that map to more than one ActionType. Multilabel is NOT expressed via skos:broader here (broader is reserved for the category hierarchy). See guideline section 'Multilabel'."""@en ;
-    skos:editorialNote """AFFIX NORMALIZATION RULES (type-level): 〜開始 => {head-class, Beginning} multilabel; 〜化 => Transformation by default; 再〜 => {stem-class, Revival} multilabel; light verbs (する/なる/おく/うける) => General."""@en ;
+    skos:editorialNote """AFFIX NORMALIZATION RULES (type-level): 〜開始 => {head-class, Beginning} multilabel; 〜化 => Transformation by default; 再〜 => {stem-class, Repetition} multilabel; use Revival only when stem itself denotes restoration (復活・回復・再興); light verbs (する/なる/おく/うける) => General."""@en ;
     skos:editorialNote """KNOWN LIMITATION: This is a context-independent, type-level dictionary. Agent/Theme-dependent boundary cases (e.g. 派遣 Military vs Diplomatic) have no single type-level answer by design."""@en ;
-    skos:editorialNote """PROVISIONAL ITEMS (v0.6): Authorization internal split (interpersonal vs institutional); CulturalExpression future split into CulturalProduction / ReligiousPractice (threshold n>=10); modern-era vocabulary gap (e.g. 打ち上げ). Rare classes with n<5 (Victory, Failure, Success, Release) were excluded from cross-validation in benchmarking."""@en ;
-    skos:changeNote """v0.6 changes from v0.5: (1) NEW classes: Communication, Rejection, Authorization, PossessionTransfer, Subjugation, De-escalation, Repetition (aspectual, for 再 compounds). (2) RENAMED: Ending -> Suspension (scope narrowed to temporary/resumable cessation); CulturalReligiousExpression -> CulturalExpression. (3) SCOPE CHANGES: Dissolution absorbs conclusive termination vocab from old Ending; Escalation restricted to increase-direction (decrease-direction moved to De-escalation, incl. 衰退). (4) Category grouping promoted from TTL comments to skos:broader relations."""@en .
+    skos:editorialNote """PROVISIONAL ITEMS: Authorization internal split (interpersonal vs institutional); CulturalExpression future split into CulturalProduction / ReligiousPractice (threshold n>=10); modern-era vocabulary gap (e.g. 打ち上げ). Rare classes with n<5 (Victory, Failure, Success, Release) were excluded from cross-validation in benchmarking."""@en .
 
 #################################################################
 #  Upper-level Categories (8) — top concepts
@@ -38,48 +37,64 @@ at:ActionTypeScheme rdf:type skos:ConceptScheme ;
 at:Category_MilitaryViolence rdf:type skos:Concept ;
     skos:prefLabel "Military, Violence & Suppression"@en ;
     skos:prefLabel "軍事・暴力・抑圧"@ja ;
+    skos:definition "Actions related to military force, violence, and the suppression of others."@en ;
+    skos:definition "軍事力・暴力、および他者の抑圧に関連する行為。"@ja ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
-at:Category_ResistanceRevolt rdf:type skos:Concept ;
-    skos:prefLabel "Resistance & Revolt"@en ;
-    skos:prefLabel "抵抗・反発"@ja ;
+at:Category_CollectiveResistance rdf:type skos:Concept ;
+    skos:prefLabel "Collective Resistance & Revolt"@en ;
+    skos:prefLabel "集団抵抗・反乱"@ja ;
+    skos:definition "Armed or unarmed collective action against authority, from a non-state actor's perspective."@en ;
+    skos:definition "国家以外の立場からの、武装・非武装を問わない権力への集団的行動。"@ja ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Category_DiplomacyRelations rdf:type skos:Concept ;
     skos:prefLabel "Diplomacy & Relations"@en ;
     skos:prefLabel "外交・関係"@ja ;
+    skos:definition "Actions related to diplomacy, negotiation, agreements, and inter-party relations."@en ;
+    skos:definition "外交・交渉・合意、および勢力間の関係に関連する行為。"@ja ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Category_PoliticalInstitutional rdf:type skos:Concept ;
     skos:prefLabel "Political & Institutional"@en ;
     skos:prefLabel "政治・制度"@ja ;
+    skos:definition "Actions related to political office, governance, and institutional or legal change."@en ;
+    skos:definition "政治的地位・統治、および制度・法の変更に関連する行為。"@ja ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
-at:Category_FormationEndings rdf:type skos:Concept ;
-    skos:prefLabel "Formation & Endings"@en ;
-    skos:prefLabel "成立・終焉"@ja ;
+at:Category_Lifecycle rdf:type skos:Concept ;
+    skos:prefLabel "Lifecycle"@en ;
+    skos:prefLabel "ライフサイクル"@ja ;
+    skos:definition "Actions related to the lifecycle of entities (states, organisations, persons) and processes: formation, beginning, cessation, and dissolution."@en ;
+    skos:definition "実体（国家・組織・人物）や出来事・プロセスのライフサイクル（成立・開始・停止・消滅）に関連する行為。"@ja ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Category_MovementChange rdf:type skos:Concept ;
     skos:prefLabel "Movement & Change"@en ;
     skos:prefLabel "移動・変化"@ja ;
+    skos:definition "Actions related to physical movement and change of state or degree."@en ;
+    skos:definition "物理的移動、および状態・程度の変化に関連する行為。"@ja ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
-at:Category_CultureProductionKnowledge rdf:type skos:Concept ;
-    skos:prefLabel "Culture, Production & Knowledge"@en ;
-    skos:prefLabel "文化・生産・知識"@ja ;
+at:Category_CultureEconomyKnowledge rdf:type skos:Concept ;
+    skos:prefLabel "Culture, Economy & Knowledge"@en ;
+    skos:prefLabel "文化・経済・知識"@ja ;
+    skos:definition "Actions related to cultural, religious, economic, scientific, and knowledge-producing activity."@en ;
+    skos:definition "文化・宗教・経済、および科学など知の生産に関連する行為。"@ja ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Category_General rdf:type skos:Concept ;
     skos:prefLabel "General"@en ;
     skos:prefLabel "汎用"@ja ;
+    skos:definition "General or domain-neutral actions that do not belong to a specific thematic category."@en ;
+    skos:definition "特定の主題カテゴリに属さない、汎用的・ドメイン中立な行為。"@ja ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
@@ -115,7 +130,7 @@ at:DisputeConflict rdf:type skos:Concept , owl:NamedIndividual , act:ActionType 
     skos:prefLabel "紛争・衝突"@ja ;
     skos:definition "An armed clash or state of hostilities between parties."@en ;
     skos:definition "勢力間の武力衝突または交戦状態。"@ja ;
-    skos:scopeNote ""@en ;
+    skos:scopeNote "Mutual armed hostilities, including civil war (内戦). Distinguished from MilitaryAttack (one-sided offensive) and RevoltInsurrection (non-state uprising against authority)."@en ;
     skos:example "衝突・抗争・参戦・内戦・交戦・武力衝突・戦闘・戦争"@ja ;
     skos:example "clash, war, civil war, combat"@en ;
     skos:broader at:Category_MilitaryViolence ;
@@ -159,7 +174,7 @@ at:Subjugation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "服属・臣従"@ja ;
     skos:definition "Establishment of a subordination/vassalage relationship, described from the subordinated side's perspective."@en ;
     skos:definition "服属・従属関係の確立（服属する側の視点）。"@ja ;
-    skos:scopeNote "NEW in v0.6. Counterpart of ConquestOccupation (which takes the conqueror's perspective). Kept as a separate class to preserve Agent-perspective in action-centric queries (a ConquestOccupation query should return conquerors, not the subjugated)."@en ;
+    skos:scopeNote "Counterpart of ConquestOccupation (which takes the conqueror's perspective). Kept as a separate class to preserve Agent-perspective in action-centric queries (a ConquestOccupation query should return conquerors, not the subjugated)."@en ;
     skos:example "服属・臣従する・支配下に入る・服従・帰順"@ja ;
     skos:example "submit, become a vassal"@en ;
     skos:broader at:Category_MilitaryViolence ;
@@ -198,7 +213,7 @@ at:Suppression rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:broader at:Category_MilitaryViolence ;
     skos:inScheme at:ActionTypeScheme .
 
-###########################  Category 2: Resistance & Revolt
+###########################  Category 2: Collective Resistance & Revolt
 
 at:RevoltInsurrection rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "Revolt Insurrection"@en ;
@@ -208,7 +223,7 @@ at:RevoltInsurrection rdf:type skos:Concept , owl:NamedIndividual , act:ActionTy
     skos:scopeNote ""@en ;
     skos:example "反乱・蜂起・一揆・暴動・革命・クーデター・挙兵・内戦"@ja ;
     skos:example "revolt, uprising, revolution, coup"@en ;
-    skos:broader at:Category_ResistanceRevolt ;
+    skos:broader at:Category_CollectiveResistance ;
     skos:inScheme at:ActionTypeScheme .
 
 at:ResistanceProtest rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -219,7 +234,7 @@ at:ResistanceProtest rdf:type skos:Concept , owl:NamedIndividual , act:ActionTyp
     skos:scopeNote "Organized / sustained opposition movements. A single act of refusal or negation (拒否・否定) is Rejection."@en ;
     skos:example "抵抗・抗議・反対・ボイコット・デモ・批判・請願・独立運動"@ja ;
     skos:example "resist, protest, boycott, petition"@en ;
-    skos:broader at:Category_ResistanceRevolt ;
+    skos:broader at:Category_CollectiveResistance ;
     skos:inScheme at:ActionTypeScheme .
 
 ###########################  Category 3: Diplomacy & Relations
@@ -284,7 +299,7 @@ at:Communication rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "意見表明・言明"@ja ;
     skos:definition "Non-coercive, non-official speech acts: asserting, persuading, proposing, promising."@en ;
     skos:definition "強制力を伴わない非公式な発話行為（主張・説得・提唱・約束など）。"@ja ;
-    skos:scopeNote "NEW in v0.6. Distinct from Declaration (official/outward) and DemandOrder (coercive). Dual category membership (Diplomacy & Relations + General) reflects its domain-neutral speech-act nature."@en ;
+    skos:scopeNote "Distinct from Declaration (official/outward) and DemandOrder (coercive). Dual category membership (Diplomacy & Relations + General) reflects its domain-neutral speech-act nature."@en ;
     skos:example "主張・説得・提唱・提示・約束"@ja ;
     skos:example "assert, persuade, propose, promise"@en ;
     skos:broader at:Category_DiplomacyRelations ;
@@ -296,7 +311,7 @@ at:Rejection rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "拒否・否定"@ja ;
     skos:definition "An expression of non-consent toward a proposal, demand, assertion, or treaty: refusal, negation, rejection, veto."@en ;
     skos:definition "提案・要求・主張・条約等に対する不同意の意思表示。"@ja ;
-    skos:scopeNote "NEW in v0.6. Defined as a negative speech act, independent of political context. Organized opposition movements are ResistanceProtest; the suppressing side's prohibitive action is Suppression. Counterpart of Authorization."@en ;
+    skos:scopeNote "Defined as a negative speech act, independent of political context. Organized opposition movements are ResistanceProtest; the suppressing side's prohibitive action is Suppression. Counterpart of Authorization."@en ;
     skos:example "拒否・否定・拒絶・否決・却下・批准拒否・調印拒否"@ja ;
     skos:example "refuse, reject, veto, deny"@en ;
     skos:broader at:Category_DiplomacyRelations ;
@@ -343,13 +358,14 @@ at:Authorization rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "許可・承認"@ja ;
     skos:definition "An official granting of permission or approval."@en ;
     skos:definition "公式な許可・承認の付与。"@ja ;
-    skos:scopeNote "NEW in v0.6. Counterpart of Rejection. PROVISIONAL: an internal distinction between institutional permission (許可・公認) and interpersonal permission (許す) is deferred until frequency justifies a split."@en ;
-    skos:example "許可・緩和・整備・再認定・公認・許す"@ja ;
-    skos:example "permit, approve, authorize"@en ;
-    skos:broader at:Category_General ;
+    skos:scopeNote "Counterpart of Rejection. Dual category: institutional permission (許可・認可・緩和 by a governing authority) falls under PoliticalInstitutional; diplomatic recognition (国家承認・独立承認) falls under DiplomacyRelations. PROVISIONAL: an internal distinction between institutional and interpersonal permission (許す) is deferred until frequency justifies a split."@en ;
+    skos:example "許可・緩和・認定・公認・許す・承認・独立承認"@ja ;
+    skos:example "permit, approve, authorize, recognize"@en ;
+    skos:broader at:Category_PoliticalInstitutional ;
+    skos:broader at:Category_DiplomacyRelations ;
     skos:inScheme at:ActionTypeScheme .
 
-###########################  Category 5: Formation & Endings
+###########################  Category 5: Lifecycle
 
 at:Foundation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "Foundation"@en ;
@@ -359,7 +375,7 @@ at:Foundation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote ""@en ;
     skos:example "成立・建国・樹立・創設・設立・結成・発足・建立・統一"@ja ;
     skos:example "found, establish, form"@en ;
-    skos:broader at:Category_FormationEndings ;
+    skos:broader at:Category_Lifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Beginning rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -370,7 +386,7 @@ at:Beginning rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Also the fallback label for 〜開始 compounds (which receive {head-class, Beginning} multilabel)."@en ;
     skos:example "誕生・生まれる・開始・始まる・登場・起こる・勃発・発生"@ja ;
     skos:example "begin, arise, break out, emerge"@en ;
-    skos:broader at:Category_FormationEndings ;
+    skos:broader at:Category_Lifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Dissolution rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -378,10 +394,10 @@ at:Dissolution rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "滅亡・解体"@ja ;
     skos:definition "The disappearance of a subject or the definitive termination of an event or process."@en ;
     skos:definition "主体の消滅、または出来事・プロセスの確定的終了。"@ja ;
-    skos:scopeNote "v0.6: scope widened to include conclusive termination of events/processes (終了・中止・打ち切り・終わる), absorbed from the old Ending class. Covers both the disappearance of a subject (滅亡・崩壊) and the definitive end of a process. Temporary/resumable cessation is Suspension; gradual decline of scale is De-escalation."@en ;
+    skos:scopeNote "Covers both the disappearance of a subject (滅亡・崩壊) and the definitive end of a process (終了・中止・打ち切り・終わる). Temporary/resumable cessation is Suspension; gradual decline of scale is De-escalation."@en ;
     skos:example "滅亡・崩壊・解体・解散・廃止・終結・消滅・壊滅・終了・中止・打ち切り・終わる"@ja ;
     skos:example "fall, collapse, dissolve, terminate"@en ;
-    skos:broader at:Category_FormationEndings ;
+    skos:broader at:Category_Lifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Death rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -392,7 +408,7 @@ at:Death rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Natural death and battlefield death. Intentional killing is AssassinationMassacre."@en ;
     skos:example "死去・死亡・没・崩御・戦死・病死・敗死・薨去"@ja ;
     skos:example "die, pass away, die in battle"@en ;
-    skos:broader at:Category_FormationEndings ;
+    skos:broader at:Category_Lifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:IndependenceSeparation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -403,7 +419,7 @@ at:IndependenceSeparation rdf:type skos:Concept , owl:NamedIndividual , act:Acti
     skos:scopeNote ""@en ;
     skos:example "独立・再独立・分離独立・分裂・自立・分立・自治"@ja ;
     skos:example "gain independence, secede, split"@en ;
-    skos:broader at:Category_FormationEndings ;
+    skos:broader at:Category_Lifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Release rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -414,7 +430,7 @@ at:Release rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Rare class (n<5 in benchmark corpus); excluded from cross-validation."@en ;
     skos:example "解放・釈放・返還・撤回・引き渡し・解除・撤廃・特赦"@ja ;
     skos:example "release, return, lift, pardon"@en ;
-    skos:broader at:Category_FormationEndings ;
+    skos:broader at:Category_Lifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Suspension rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -422,10 +438,10 @@ at:Suspension rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "中断・停止"@ja ;
     skos:definition "Temporary, resumable cessation of an activity or process."@en ;
     skos:definition "活動・プロセスの一時的・再開可能な停止。"@ja ;
-    skos:scopeNote "RENAMED from Ending in v0.6, scope narrowed to temporary/resumable cessation only. Conclusive termination (終了・中止・打ち切り) moved to Dissolution."@en ;
+    skos:scopeNote "Temporary, resumable cessation only. Conclusive termination (終了・中止・打ち切り) is Dissolution."@en ;
     skos:example "停止・中断・休戦・停戦・収束・沈静化・休業・停滞・更新せず"@ja ;
     skos:example "suspend, halt, truce, stagnate"@en ;
-    skos:broader at:Category_FormationEndings ;
+    skos:broader at:Category_Lifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 ###########################  Category 6: Movement & Change
@@ -457,7 +473,7 @@ at:Revival rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "復興・回復"@ja ;
     skos:definition "The restoration or revival of a previously existing entity or state."@en ;
     skos:definition "かつて存在した実体・状態の復興・回復。"@ja ;
-    skos:scopeNote "Signaled by the 再〜 prefix; 再〜 compounds receive a {stem-class, Revival} multilabel."@en ;
+    skos:scopeNote "Assigned when the stem itself denotes restoration (復活・回復・再興). Generic 再〜 compounds use {stem-class, Repetition} multilabel instead; Revival is not triggered by the 再 prefix alone."@en ;
     skos:example "再建・復活・復興・再興・回復・復帰・再生・再統一・名誉回復"@ja ;
     skos:example "revive, restore, rebuild"@en ;
     skos:broader at:Category_MovementChange ;
@@ -468,7 +484,7 @@ at:Escalation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "拡大・激化"@ja ;
     skos:definition "Increase in scale, intensity, or degree."@en ;
     skos:definition "規模・強度・程度の増大。"@ja ;
-    skos:scopeNote "v0.6: restricted to the increase direction only. Decrease/decline (縮小・衰退・急減) moved to De-escalation."@en ;
+    skos:scopeNote "Restricted to the increase direction only. Decrease/decline (縮小・衰退・急減) is De-escalation."@en ;
     skos:example "拡大・強化・激化・過激化・増大・躍進・勢力拡大・本格化"@ja ;
     skos:example "expand, intensify, escalate"@en ;
     skos:broader at:Category_MovementChange ;
@@ -479,7 +495,7 @@ at:DeEscalation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "縮小・減退"@ja ;
     skos:definition "Decrease or gradual decline in scale, intensity, or degree (still existing, but weakening)."@en ;
     skos:definition "規模・強度・程度の縮小・減衰（存在はするが弱まる）。"@ja ;
-    skos:scopeNote "NEW in v0.6. Counterpart of Escalation. Distinct from Suspension (temporary halt) and Dissolution (disappearance). 衰退 (gradual decline) belongs here; 滅亡 (disappearance at a point) stays in Dissolution."@en ;
+    skos:scopeNote "Counterpart of Escalation. Distinct from Suspension (temporary halt) and Dissolution (disappearance). 衰退 (gradual decline) belongs here; 滅亡 (disappearance at a point) stays in Dissolution."@en ;
     skos:example "衰退・縮小・弱体化・後退・鎮静化・減退"@ja ;
     skos:example "decline, shrink, weaken"@en ;
     skos:broader at:Category_MovementChange ;
@@ -490,24 +506,24 @@ at:Repetition rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "反復・再"@ja ;
     skos:definition "The recurrence of an action or event that has happened before; an aspectual marker signalled by the 再 prefix."@en ;
     skos:definition "以前に起きた動作・出来事が再び起こること。接頭辞「再」が示すアスペクト標識。"@ja ;
-    skos:scopeNote "NEW in v0.6. Aspectual counterpart of Beginning (for 開始). 再〜 compounds receive a {stem-class, Repetition} multilabel. Revival is assigned only when the stem itself means restoration (復活・回復・再興), not merely because of the 再 prefix."@en ;
+    skos:scopeNote "Aspectual counterpart of Beginning (for 開始). 再〜 compounds receive a {stem-class, Repetition} multilabel. Revival is assigned only when the stem itself means restoration (復活・回復・再興), not merely because of the 再 prefix."@en ;
     skos:example "再襲来・再奪回・再認定・再軍備・再結成"@ja ;
     skos:example "recur, happen again, resume"@en ;
     skos:broader at:Category_MovementChange ;
     skos:inScheme at:ActionTypeScheme .
 
 
-###########################  Category 7: Culture, Production & Knowledge
+###########################  Category 7: Culture, Economy & Knowledge
 
 at:ExplorationDiscovery rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "Exploration Discovery"@en ;
     skos:prefLabel "探検・発見"@ja ;
-    skos:definition "An intentional act of exploration or discovery."@en ;
-    skos:definition "意図的な探検・発見の行為。"@ja ;
+    skos:definition "An act of exploration or discovery."@en ;
+    skos:definition "探検・発見の行為。"@ja ;
     skos:scopeNote "Intentional exploratory acts. Unintentional arrival (漂着) is Movement."@en ;
     skos:example "探検・発見・航海・世界周航・世界一周・調査・登頂・踏査・開拓"@ja ;
     skos:example "explore, discover, voyage, survey"@en ;
-    skos:broader at:Category_CultureProductionKnowledge ;
+    skos:broader at:Category_CultureEconomyKnowledge ;
     skos:inScheme at:ActionTypeScheme .
 
 at:ConstructionProduction rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -518,7 +534,7 @@ at:ConstructionProduction rdf:type skos:Concept , owl:NamedIndividual , act:Acti
     skos:scopeNote ""@en ;
     skos:example "建設・建造・建築・製造・鋳造・着工・完成・作成・開発・竣工"@ja ;
     skos:example "build, construct, manufacture"@en ;
-    skos:broader at:Category_CultureProductionKnowledge ;
+    skos:broader at:Category_CultureEconomyKnowledge ;
     skos:inScheme at:ActionTypeScheme .
 
 at:CulturalExpression rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -526,10 +542,10 @@ at:CulturalExpression rdf:type skos:Concept , owl:NamedIndividual , act:ActionTy
     skos:prefLabel "文化・宗教・創作"@ja ;
     skos:definition "Cultural, creative, or religious expression and practice."@en ;
     skos:definition "文化的・創作的・宗教的な表現および実践。"@ja ;
-    skos:scopeNote "RENAMED from CulturalReligiousExpression in v0.6. Subsumes both creative/cultural production and religious practice. PROVISIONAL future split into CulturalProduction (著す・執筆・刊行・初演・放送) and ReligiousPractice (布教・伝来・改宗・列聖), to be introduced only if each candidate reaches n>=10."@en ;
+    skos:scopeNote "Subsumes both creative/cultural production and religious practice. PROVISIONAL future split into CulturalProduction (著す・執筆・刊行・初演・放送) and ReligiousPractice (布教・伝来・改宗・列聖), to be introduced only if each candidate reaches n>=10."@en ;
     skos:example "布教・伝来・伝道・改宗・列聖・刊行・著す・執筆・創作・初演・撮影・出版・放送"@ja ;
     skos:example "preach, publish, compose, perform"@en ;
-    skos:broader at:Category_CultureProductionKnowledge ;
+    skos:broader at:Category_CultureEconomyKnowledge ;
     skos:inScheme at:ActionTypeScheme .
 
 at:ScientificInvention rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -540,7 +556,7 @@ at:ScientificInvention rdf:type skos:Concept , owl:NamedIndividual , act:ActionT
     skos:scopeNote "PROVISIONAL: modern-era vocabulary (e.g. 打ち上げ) sits at the Movement / ScientificInvention boundary; logged as a future expansion candidate."@en ;
     skos:example "発明・発見・改良・発達・解明・実験・研究・開発・設計・打ち上げ"@ja ;
     skos:example "invent, discover, experiment"@en ;
-    skos:broader at:Category_CultureProductionKnowledge ;
+    skos:broader at:Category_CultureEconomyKnowledge ;
     skos:inScheme at:ActionTypeScheme .
 
 at:TradeEconomy rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -551,7 +567,7 @@ at:TradeEconomy rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Includes commissioning/opening of trade & transport infrastructure (開通・就航) as a corpus-specific economic reading. Pure possession transfer without an economic frame (授与・寄進) is PossessionTransfer."@en ;
     skos:example "通商・貿易・販売・輸入・輸出・開港・課税・略奪・採掘・金融・開通・就航"@ja ;
     skos:example "trade, import, export, tax"@en ;
-    skos:broader at:Category_CultureProductionKnowledge ;
+    skos:broader at:Category_CultureEconomyKnowledge ;
     skos:inScheme at:ActionTypeScheme .
 
 ###########################  Category 8: General
@@ -583,7 +599,7 @@ at:PossessionTransfer rdf:type skos:Concept , owl:NamedIndividual , act:ActionTy
     skos:prefLabel "授与・移譲"@ja ;
     skos:definition "Transfer of possession of an object, title, or right from one party to another, without an inherent commercial frame."@en ;
     skos:definition "経済的枠組みを伴わない、物品・称号・権利の一方から他方への移転。"@ja ;
-    skos:scopeNote "NEW in v0.6 (formerly proposed as 'Transfer', renamed to avoid confusion with Movement/relocation). Absorbs the tribute vocabulary (朝貢・献上). Commercial exchange is TradeEconomy."@en ;
+    skos:scopeNote "Absorbs the tribute vocabulary (朝貢・献上). Commercial exchange is TradeEconomy."@en ;
     skos:example "授与・寄進・あたえる・付与・得る・朝貢・献上"@ja ;
     skos:example "grant, bestow, endow, pay tribute"@en ;
     skos:broader at:Category_General ;
