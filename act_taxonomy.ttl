@@ -4,15 +4,30 @@
 @prefix owl:  <http://www.w3.org/2002/07/owl#> .
 @prefix xsd:  <http://www.w3.org/2001/XMLSchema#> .
 @prefix dct:  <http://purl.org/dc/terms/> .
-#
-# NOTE ON NAMESPACE (temporary):
-# The base IRI below is the current Protégé default. When Persistent URIs are
-# issued, replace this base with:  https://w3id.org/act/taxonomy#
-# (ontology structure will live separately at https://w3id.org/act/ontology#)
-#
 @prefix at:   <https://w3id.org/act/taxonomy#> .
 @prefix act:  <https://w3id.org/act/ontology#> .
 @base <https://w3id.org/act/taxonomy#> .
+
+#################################################################
+#  Ontology declaration / import
+#
+#  This taxonomy imports the ACT ontology (structure: the ActionType
+#  class and the object/datatype properties). The import is ENABLED by
+#  default: opening this file in a tool such as Protégé will also pull in
+#  the ontology, so the 44 ActionTypes are recognised as act:ActionType.
+#
+#  TO DEACTIVATE the import (e.g. to work offline, to pin a local copy of
+#  the ontology, or to combine this taxonomy with a different ontology),
+#  comment out the `owl:imports` line below by adding a `#` in front of it.
+#  Everything still parses without the import; you just need to load the
+#  ontology by other means (e.g. add both files to the same GraphDB
+#  repository) for the act:ActionType typing to resolve.
+#################################################################
+
+<https://w3id.org/act/taxonomy> rdf:type owl:Ontology ;
+    owl:imports <https://w3id.org/act/ontology> ;   # <-- comment out this line to deactivate the import
+    owl:versionInfo "1.0" ;
+    dct:title "ACT ActionType Taxonomy"@en .
 
 #################################################################
 #  Concept Scheme
@@ -66,19 +81,19 @@ at:Category_PoliticalInstitutional rdf:type skos:Concept ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
-at:Category_Lifecycle rdf:type skos:Concept ;
-    skos:prefLabel "Lifecycle"@en ;
-    skos:prefLabel "ライフサイクル"@ja ;
-    skos:definition "Actions related to the lifecycle of entities (states, organisations, persons) and processes: formation, beginning, cessation, and dissolution."@en ;
-    skos:definition "実体（国家・組織・人物）や出来事・プロセスのライフサイクル（成立・開始・停止・消滅）に関連する行為。"@ja ;
+at:Category_ExistenceLifecycle rdf:type skos:Concept ;
+    skos:prefLabel "Existence & Lifecycle"@en ;
+    skos:prefLabel "存在・ライフサイクル"@ja ;
+    skos:definition "Actions concerning the existence and lifecycle of a subject (a person, state, organisation, or polity): its coming into being, ending, and separation."@en ;
+    skos:definition "主体（人物・国家・組織・政体）の存在とライフサイクル、すなわち発生・終焉・分離に関連する行為。"@ja ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
-at:Category_MovementChange rdf:type skos:Concept ;
-    skos:prefLabel "Movement & Change"@en ;
-    skos:prefLabel "移動・変化"@ja ;
-    skos:definition "Actions related to physical movement and change of state or degree."@en ;
-    skos:definition "物理的移動、および状態・程度の変化に関連する行為。"@ja ;
+at:Category_StateTransition rdf:type skos:Concept ;
+    skos:prefLabel "State & Transition"@en ;
+    skos:prefLabel "状態・変遷"@ja ;
+    skos:definition "Actions concerning a change in the state, degree, position, or continuity of an existing subject: movement, escalation, transformation, suspension, and release."@en ;
+    skos:definition "既存の主体の状態・程度・位置・継続性の変化に関連する行為（移動・増減・変容・中断・解放など）。"@ja ;
     skos:topConceptOf at:ActionTypeScheme ;
     skos:inScheme at:ActionTypeScheme .
 
@@ -299,11 +314,10 @@ at:Communication rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "意見表明・言明"@ja ;
     skos:definition "Non-coercive, non-official speech acts: asserting, persuading, proposing, promising."@en ;
     skos:definition "強制力を伴わない非公式な発話行為（主張・説得・提唱・約束など）。"@ja ;
-    skos:scopeNote "Distinct from Declaration (official/outward) and DemandOrder (coercive). Dual category membership (Diplomacy & Relations + General) reflects its domain-neutral speech-act nature."@en ;
+    skos:scopeNote "Distinct from Declaration (official/outward) and DemandOrder (coercive). A non-coercive speech act placed under Diplomacy & Relations."@en ;
     skos:example "主張・説得・提唱・提示・約束"@ja ;
     skos:example "assert, persuade, propose, promise"@en ;
     skos:broader at:Category_DiplomacyRelations ;
-    skos:broader at:Category_General ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Rejection rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -315,7 +329,6 @@ at:Rejection rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:example "拒否・否定・拒絶・否決・却下・批准拒否・調印拒否"@ja ;
     skos:example "refuse, reject, veto, deny"@en ;
     skos:broader at:Category_DiplomacyRelations ;
-    skos:broader at:Category_General ;
     skos:inScheme at:ActionTypeScheme .
 
 ###########################  Category 4: Political & Institutional
@@ -358,10 +371,9 @@ at:Authorization rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:prefLabel "許可・承認"@ja ;
     skos:definition "An official granting of permission or approval."@en ;
     skos:definition "公式な許可・承認の付与。"@ja ;
-    skos:scopeNote "Counterpart of Rejection. Dual category: institutional permission (許可・認可・緩和 by a governing authority) falls under PoliticalInstitutional; diplomatic recognition (国家承認・独立承認) falls under DiplomacyRelations. PROVISIONAL: an internal distinction between institutional and interpersonal permission (許す) is deferred until frequency justifies a split."@en ;
+    skos:scopeNote "Counterpart of Rejection."@en ;
     skos:example "許可・緩和・認定・公認・許す・承認・独立承認"@ja ;
     skos:example "permit, approve, authorize, recognize"@en ;
-    skos:broader at:Category_PoliticalInstitutional ;
     skos:broader at:Category_DiplomacyRelations ;
     skos:inScheme at:ActionTypeScheme .
 
@@ -375,7 +387,7 @@ at:Foundation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote ""@en ;
     skos:example "成立・建国・樹立・創設・設立・結成・発足・建立・統一"@ja ;
     skos:example "found, establish, form"@en ;
-    skos:broader at:Category_Lifecycle ;
+    skos:broader at:Category_ExistenceLifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Beginning rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -386,7 +398,7 @@ at:Beginning rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Also the fallback label for 〜開始 compounds (which receive {head-class, Beginning} multilabel)."@en ;
     skos:example "誕生・生まれる・開始・始まる・登場・起こる・勃発・発生"@ja ;
     skos:example "begin, arise, break out, emerge"@en ;
-    skos:broader at:Category_Lifecycle ;
+    skos:broader at:Category_ExistenceLifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Dissolution rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -397,7 +409,7 @@ at:Dissolution rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Covers both the disappearance of a subject (滅亡・崩壊) and the definitive end of a process (終了・中止・打ち切り・終わる). Temporary/resumable cessation is Suspension; gradual decline of scale is De-escalation."@en ;
     skos:example "滅亡・崩壊・解体・解散・廃止・終結・消滅・壊滅・終了・中止・打ち切り・終わる"@ja ;
     skos:example "fall, collapse, dissolve, terminate"@en ;
-    skos:broader at:Category_Lifecycle ;
+    skos:broader at:Category_ExistenceLifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Death rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -408,7 +420,7 @@ at:Death rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Natural death and battlefield death. Intentional killing is AssassinationMassacre."@en ;
     skos:example "死去・死亡・没・崩御・戦死・病死・敗死・薨去"@ja ;
     skos:example "die, pass away, die in battle"@en ;
-    skos:broader at:Category_Lifecycle ;
+    skos:broader at:Category_ExistenceLifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:IndependenceSeparation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -419,7 +431,7 @@ at:IndependenceSeparation rdf:type skos:Concept , owl:NamedIndividual , act:Acti
     skos:scopeNote ""@en ;
     skos:example "独立・再独立・分離独立・分裂・自立・分立・自治"@ja ;
     skos:example "gain independence, secede, split"@en ;
-    skos:broader at:Category_Lifecycle ;
+    skos:broader at:Category_ExistenceLifecycle ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Release rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -430,7 +442,7 @@ at:Release rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Rare class (n<5 in benchmark corpus); excluded from cross-validation."@en ;
     skos:example "解放・釈放・返還・撤回・引き渡し・解除・撤廃・特赦"@ja ;
     skos:example "release, return, lift, pardon"@en ;
-    skos:broader at:Category_Lifecycle ;
+    skos:broader at:Category_StateTransition ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Suspension rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -441,7 +453,7 @@ at:Suspension rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Temporary, resumable cessation only. Conclusive termination (終了・中止・打ち切り) is Dissolution."@en ;
     skos:example "停止・中断・休戦・停戦・収束・沈静化・休業・停滞・更新せず"@ja ;
     skos:example "suspend, halt, truce, stagnate"@en ;
-    skos:broader at:Category_Lifecycle ;
+    skos:broader at:Category_StateTransition ;
     skos:inScheme at:ActionTypeScheme .
 
 ###########################  Category 6: Movement & Change
@@ -454,7 +466,7 @@ at:Movement rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Physical relocation without inherent intent of exploration/discovery. Intentional exploratory travel (世界一周・航海) is ExplorationDiscovery; unintentional arrival (漂着) stays here."@en ;
     skos:example "遷都・移転・移住・移民・行く・出発・到達・漂着・来航・亡命・帰国"@ja ;
     skos:example "relocate, migrate, arrive, flee"@en ;
-    skos:broader at:Category_MovementChange ;
+    skos:broader at:Category_StateTransition ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Transformation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -465,7 +477,7 @@ at:Transformation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Default class for 〜化 compounds (state change). Where the stem has a strong domain pull (e.g. 自治領化), treat as multilabel."@en ;
     skos:example "改宗・イスラーム化・民主化・近代化・国有化・西洋化・独裁化・公然化・表面化"@ja ;
     skos:example "convert, democratize, nationalize"@en ;
-    skos:broader at:Category_MovementChange ;
+    skos:broader at:Category_StateTransition ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Revival rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -476,7 +488,7 @@ at:Revival rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Assigned when the stem itself denotes restoration (復活・回復・再興). Generic 再〜 compounds use {stem-class, Repetition} multilabel instead; Revival is not triggered by the 再 prefix alone."@en ;
     skos:example "再建・復活・復興・再興・回復・復帰・再生・再統一・名誉回復"@ja ;
     skos:example "revive, restore, rebuild"@en ;
-    skos:broader at:Category_MovementChange ;
+    skos:broader at:Category_StateTransition ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Escalation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -487,7 +499,7 @@ at:Escalation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Restricted to the increase direction only. Decrease/decline (縮小・衰退・急減) is De-escalation."@en ;
     skos:example "拡大・強化・激化・過激化・増大・躍進・勢力拡大・本格化"@ja ;
     skos:example "expand, intensify, escalate"@en ;
-    skos:broader at:Category_MovementChange ;
+    skos:broader at:Category_StateTransition ;
     skos:inScheme at:ActionTypeScheme .
 
 at:DeEscalation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -498,7 +510,7 @@ at:DeEscalation rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Counterpart of Escalation. Distinct from Suspension (temporary halt) and Dissolution (disappearance). 衰退 (gradual decline) belongs here; 滅亡 (disappearance at a point) stays in Dissolution."@en ;
     skos:example "衰退・縮小・弱体化・後退・鎮静化・減退"@ja ;
     skos:example "decline, shrink, weaken"@en ;
-    skos:broader at:Category_MovementChange ;
+    skos:broader at:Category_StateTransition ;
     skos:inScheme at:ActionTypeScheme .
 
 at:Repetition rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
@@ -509,7 +521,7 @@ at:Repetition rdf:type skos:Concept , owl:NamedIndividual , act:ActionType ;
     skos:scopeNote "Aspectual counterpart of Beginning (for 開始). 再〜 compounds receive a {stem-class, Repetition} multilabel. Revival is assigned only when the stem itself means restoration (復活・回復・再興), not merely because of the 再 prefix."@en ;
     skos:example "再襲来・再奪回・再認定・再軍備・再結成"@ja ;
     skos:example "recur, happen again, resume"@en ;
-    skos:broader at:Category_MovementChange ;
+    skos:broader at:Category_StateTransition ;
     skos:inScheme at:ActionTypeScheme .
 
 
