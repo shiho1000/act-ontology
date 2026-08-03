@@ -48,6 +48,26 @@
     rdfs:label "Event Dispute"@en ;
     rdfs:comment "A conflictual event involving opposing parties (e.g. wars, battles, armed conflicts)."@en .
 
+:EventHazard rdf:type owl:Class ;
+    rdfs:subClassOf :Event ;
+    rdfs:label "Event Hazard"@en ;
+    rdfs:comment "An event constituting a hazard or crisis: natural disasters, epidemics, economic crises, and anthropogenic hazards (accidents, terror). Collapses COTEN event.hazard and event.hazard.anthropogenicHazard (2nd level; the natural/anthropogenic sub-split is not modelled as separate classes)."@en .
+
+:EventConcept rdf:type owl:Class ;
+    rdfs:subClassOf :Event ;
+    rdfs:label "Event Concept"@en ;
+    rdfs:comment "An institutional, legal, or abstract event: treaties, laws, declarations, reforms, policies, and doctrinal or religious changes (COTEN event.concept)."@en .
+
+:EventArtifact rdf:type owl:Class ;
+    rdfs:subClassOf :Event ;
+    rdfs:label "Event Artifact"@en ;
+    rdfs:comment "An event centred on the creation of a material or intellectual artifact: inventions, constructions, publications, launches (COTEN event.artifact)."@en .
+
+:EventMobility rdf:type owl:Class ;
+    rdfs:subClassOf :Event ;
+    rdfs:label "Event Mobility"@en ;
+    rdfs:comment "An event of movement or relocation: migration, travel, expeditions (COTEN event.mobility.*, 2nd level)."@en .
+
 ###  ActionType
 
 :ActionType rdf:type owl:Class ;
@@ -170,6 +190,18 @@
     rdfs:domain :Event ;
     rdfs:range  xsd:string .
 
+:hasPlaceLabel rdf:type owl:DatatypeProperty ;
+    rdfs:label "has place label"@en ;
+    rdfs:comment "Literal fallback for place expressions that could not be resolved to an Entity. Complement to :hasPlace; used when Entity resolution fails so the expression is preserved in the graph rather than dropped. 0..*."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:string .
+
+:hasTerritoryLabel rdf:type owl:DatatypeProperty ;
+    rdfs:label "has territory label"@en ;
+    rdfs:comment "Literal fallback for territory expressions that could not be resolved to an Entity. Complement to :hasTerritory; used when Entity resolution fails so the expression is preserved in the graph rather than dropped. 0..*."@en ;
+    rdfs:domain :Event ;
+    rdfs:range  xsd:string .
+
 :hasPlace rdf:type owl:ObjectProperty ;
     rdfs:label "has place"@en ;
     rdfs:comment "Links an Event to the Space where it occurred (0..1)."@en ;
@@ -191,7 +223,7 @@
 
 :hasActionType rdf:type owl:ObjectProperty ;
     rdfs:label "has action type"@en ;
-    rdfs:comment "Links an Event to an ActionType individual defined in act_taxonomy.ttl (0..1). OWL 2 DL compliant: domain Event, range ActionType."@en ;
+    rdfs:comment "Links an Event to one or more ActionType individuals defined in act_taxonomy.ttl (0..*). Multilabel: an event may bear several ActionTypes reflecting lexical multivalence of its Action expression. OWL 2 DL compliant: domain Event, range ActionType."@en ;
     rdfs:domain :Event ;
     rdfs:range  :ActionType ;
     skos:broadMatch crm:P2_hasType .
