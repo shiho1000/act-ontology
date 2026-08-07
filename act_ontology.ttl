@@ -354,28 +354,28 @@
     rdfs:range  xsd:decimal .
 
 # =============================================================================
-# ACT Layer-1 addition: GDTF date provenance properties
+# ACT Layer-1 addition: Date provenance properties
 # Merge these into act_ontology.ttl (namespace ':' = https://w3id.org/act/ontology#).
-# Rationale: Dates are structured free text (GDTF), not SQL DATE. We keep the
+# Rationale: Dates are structured free text. We keep the
 # lossless raw string, an integer year anchor for range queries, a typed date only for
 # exact single points, and a boolean uncertainty flag.
 # =============================================================================
 
 :startDateRaw rdf:type owl:DatatypeProperty ;
-    rdfs:label   "start date (raw GDTF)"@en ;
-    rdfs:comment "Lossless original GDTF start-date string as found in the source. Always emitted when present."@en ;
+    rdfs:label   "start date (raw text)"@en ;
+    rdfs:comment "Lossless original start-date string as found in the source. Always emitted when present."@en ;
     rdfs:domain  :Event ;
     rdfs:range   xsd:string .
 
 :endDateRaw rdf:type owl:DatatypeProperty ;
-    rdfs:label   "end date (raw GDTF)"@en ;
-    rdfs:comment "Lossless original GDTF end-date string as found in the source."@en ;
+    rdfs:label   "end date (raw text)"@en ;
+    rdfs:comment "Lossless original end-date string as found in the source."@en ;
     rdfs:domain  :Event ;
     rdfs:range   xsd:string .
 
 :startDateApproximate rdf:type owl:DatatypeProperty ;
     rdfs:label   "start date approximate"@en ;
-    rdfs:comment "True when the start date is uncertain / not an exact single point: GDTF '~' (circa), '%' (approximate), '[a..b]' (range), or 'x' (wildcard). Open intervals ('X/', '/X') are NOT approximate — their known endpoint is exact. Absent means the value is an exact point."@en ;
+    rdfs:comment "True when the start date is uncertain / not an exact single point:  '~' (circa), '%' (approximate), '[a..b]' (range), or 'x' (wildcard). Open intervals ('X/', '/X') are NOT approximate — their known endpoint is exact. Absent means the value is an exact point."@en ;
     rdfs:domain  :Event ;
     rdfs:range   xsd:boolean .
 
