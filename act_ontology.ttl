@@ -53,16 +53,6 @@
     rdfs:label "Event Hazard"@en ;
     rdfs:comment "An event constituting a hazard or crisis: natural disasters, epidemics, economic crises, and anthropogenic hazards (accidents, terror). ."@en .
 
-:EventConcept rdf:type owl:Class ;
-    rdfs:subClassOf :Event ;
-    rdfs:label "Event Concept"@en ;
-    rdfs:comment "An institutional, legal, or abstract event: treaties, laws, declarations, reforms, policies, and doctrinal or religious changes."@en .
-
-:EventArtifact rdf:type owl:Class ;
-    rdfs:subClassOf :Event ;
-    rdfs:label "Event Artifact"@en ;
-    rdfs:comment "An event centred on the creation of a material or intellectual artifact: inventions, constructions, publications, launches "@en .
-
 :EventMobility rdf:type owl:Class ;
     rdfs:subClassOf :Event ;
     rdfs:label "Event Mobility"@en ;
