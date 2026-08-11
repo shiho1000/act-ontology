@@ -249,7 +249,8 @@
 
 :eventLabel rdf:type owl:DatatypeProperty ;
     rdfs:label "event label"@en ;
-    rdfs:comment "Human-readable label of the event, typically in Japanese from the source text."@en ;
+    rdfs:comment "DEPRECATED (2026-08). Superseded by rdfs:label for all Entity subtypes including Event, for consistency with Actor/Space/Thing labeling and for compatibility with generic RDF tooling (e.g. GraphDB Visual Graph node labels). Retained in the ontology only so pre-2026-08 data (sekaishizuroku_data.ttl generated before this change) remains valid; do not use in new ETL runs."@en ;
+    owl:deprecated true ;
     rdfs:domain :Event ;
     rdfs:range  xsd:string .
 
