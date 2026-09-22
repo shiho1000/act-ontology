@@ -36,7 +36,7 @@
 
 ###  Event
 
-:Event rdf:type owl:Class ;
+:Event rdf:type owl:Class , skos:Concept ;
     rdfs:subClassOf :Entity ;
     rdfs:label "Event"@en ;
     rdfs:comment "A historical occurrence. Thematic roles (Agent, Patient, Theme, Place, Territory) are expressed via object properties on Event. No intermediate role classes."@en ;
@@ -60,14 +60,14 @@
 
 ###  ActionType
 
-:ActionType rdf:type owl:Class ;
+:ActionType rdf:type owl:Class , skos:Concept ;
     rdfs:label "Action Type"@en ;
-    rdfs:comment "Class whose instances represent action classification categories. Instances (NamedIndividuals / skos:Concepts) are defined in act_taxonomy.ttl. ETL assigns one individual per Event via :hasActionType."@en ;
+    rdfs:comment "Class whose instances represent action classification categories. Instances (NamedIndividuals / skos:Concepts) are defined in act_taxonomy.ttl."@en ;
     skos:broadMatch crm:E55_Type .
 
 ###  Actor hierarchy
 
-:Actor rdf:type owl:Class ;
+:Actor rdf:type owl:Class , skos:Concept ;
     rdfs:subClassOf :Entity ;
     rdfs:label "Actor"@en ;
     rdfs:comment "A human or collective agent participating in historical events."@en ;
@@ -96,11 +96,11 @@
 
 ###  Space hierarchy
 
-:Space rdf:type owl:Class ;
+:Space rdf:type owl:Class , skos:Concept ;
     rdfs:subClassOf :Entity ;
     rdfs:label "Space"@en ;
     rdfs:comment "A geographic or spatial entity."@en ;
-    skos:broadMatch sem:Place ;
+    skos:closeMatch sem:Place ;
     skos:closeMatch crm:E53_Place.
 
 :SpacePlace rdf:type owl:Class ;
@@ -127,7 +127,7 @@
 
 ###  Reference
 
-:Reference rdf:type owl:Class ;
+:Reference rdf:type owl:Class , skos:Concept ;
     rdfs:label "Reference"@en ;
     rdfs:comment "A source document from which historical events are extracted (e.g. textbook, encyclopaedia). Provenance layer: not a historical entity. Used to filter events by source and detect corpus bias."@en ;
     skos:closeMatch prov:Entity .
@@ -138,12 +138,12 @@
 
 ###  Event → thematic role properties
 
-:hasAgent rdf:type owl:ObjectProperty ;
+:hasAgent rdf:type owl:ObjectProperty , skos:Concept ;
     rdfs:label "has agent"@en ;
     rdfs:comment "Links an Event to an Actor individual acting as the volitional initiator of the action (SRL: Agent). 0..*."@en ;
     rdfs:domain :Event ;
     rdfs:range  :Actor ;
-    skos:exactMatch sem:hasActor ;
+    skos:broadMatch sem:hasActor ;
     skos:closeMatch crm:P14_carried_out_by .
 
 :hasAgentLabel rdf:type owl:DatatypeProperty ;
@@ -152,9 +152,9 @@
     rdfs:domain :Event ;
     rdfs:range  xsd:string .
 
-:hasPatient rdf:type owl:ObjectProperty ;
+:hasPatient rdf:type owl:ObjectProperty , skos:Concept ;
     rdfs:label "has patient"@en ;
-    rdfs:comment "Links an Event to an Actor or Space individual that undergoes a state change as the direct object of the action (SRL: Patient). Range: Actor ∪ Space. 0..*. Separated from hasTheme"@en ;
+    rdfs:comment "Links an Event to an Actor or Space individual that undergoes a state change as the direct object of the action (SRL: Patient). Range: Actor ∪ Space. 0..*.  "@en ;
     rdfs:domain :Event ;
     rdfs:range  [ rdf:type owl:Class ;
                   owl:unionOf ( :Actor :Space ) ] ;
@@ -164,9 +164,8 @@
     rdfs:label "has patient label"@en ;
     rdfs:comment "Literal fallback for patient expressions that could not be resolved to an Entity (e.g. common nowns). Complement to :hasPatient; used when Entity resolution fails so the expression is preserved in the graph rather than dropped. 0..*."@en ;
     rdfs:domain :Event ;
-    rdfs:range  xsd:string .
 
-:hasTheme rdf:type owl:ObjectProperty ;
+:hasTheme rdf:type owl:ObjectProperty , skos:Concept ;
     rdfs:label "has theme"@en ;
     rdfs:comment "Links an Event to an Event or Thing individual that is the thematic focus of the action without necessarily undergoing state change (SRL: Theme). Range: Event ∪ Thing. 0..*. "@en ;
     rdfs:domain :Event ;
@@ -192,16 +191,16 @@
     rdfs:domain :Event ;
     rdfs:range  xsd:string .
 
-:hasPlace rdf:type owl:ObjectProperty ;
+:hasPlace rdf:type owl:ObjectProperty , skos:Concept ;
     rdfs:label "has place"@en ;
     rdfs:comment "Links an Event to the Space where it occurred (0..1)."@en ;
     rdfs:domain :Event ;
     rdfs:range  :Space ;
     skos:exactMatch sem:hasPlace ;
-    skos:exactMatch crm:P7_took_place_at ;
-    skos:exactMatch wdt:P276 .
+    skos:closeMatch crm:P7_took_place_at ;
+    skos:closeMatch wdt:P276 .
 
-:hasTerritory rdf:type owl:ObjectProperty ;
+:hasTerritory rdf:type owl:ObjectProperty , skos:Concept ;
     rdfs:label "has territory"@en ;
     rdfs:comment "Links an Event to a country or region associated with it, including the home territories of participating actors as distinct from the physical location of occurrence (:hasPlace). E.g. for 'In 1858, the British began direct rule over India', Place = none while Territory includes Britain and India. Range: SpacePlace ∪ ActorGroupPolity."@en ;
     rdfs:domain :Event ;
@@ -211,14 +210,14 @@
     skos:closeMatch wdt:P17 ;
     skos:closeMatch wdt:P131 .
 
-:hasActionType rdf:type owl:ObjectProperty ;
+:hasActionType rdf:type owl:ObjectProperty , skos:Concept ;
     rdfs:label "has action type"@en ;
     rdfs:comment "Links an Event to one or more ActionType individuals defined in act_taxonomy.ttl (0..*). Multilabel: an event may bear several ActionTypes reflecting lexical multivalence of its Action expression. OWL 2 DL compliant: domain Event, range ActionType."@en ;
     rdfs:domain :Event ;
     rdfs:range  :ActionType ;
     skos:broadMatch crm:P2_hasType .
 
-:hasReference rdf:type owl:ObjectProperty ;
+:hasReference rdf:type owl:ObjectProperty , skos:Concept ;
     rdfs:label "has reference"@en ;
     rdfs:comment "Links an Event to its source document (0..*). Provenance layer."@en ;
     rdfs:domain :Event ;
@@ -227,7 +226,7 @@
 
 ###  Event–Event relations
 
-:hasSubEvent rdf:type owl:ObjectProperty , owl:TransitiveProperty ;
+:hasSubEvent rdf:type owl:ObjectProperty , owl:TransitiveProperty , skos:Concept ;
     rdfs:label "has sub-event"@en ;
     rdfs:comment "Links an Event to a constituent sub-Event. Transitive. Inverse of :isSubEventOf."@en ;
     rdfs:domain :Event ;
@@ -235,7 +234,7 @@
     skos:exactMatch sem:hasSubEvent ;
     skos:closeMatch crm:P9_consists_of .
 
-:isSubEventOf rdf:type owl:ObjectProperty ;
+:isSubEventOf rdf:type owl:ObjectProperty , skos:Concept ;
     owl:inverseOf :hasSubEvent ;
     rdfs:comment "Links an Event to its parent Event. Inverse of :hasSubEvent."@en ;
     rdfs:label "is sub-event of"@en ;
