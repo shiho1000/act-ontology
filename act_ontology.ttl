@@ -162,8 +162,9 @@
 
 :hasPatientLabel rdf:type owl:DatatypeProperty ;
     rdfs:label "has patient label"@en ;
-    rdfs:comment "Literal fallback for patient expressions that could not be resolved to an Entity (e.g. common nowns). Complement to :hasPatient; used when Entity resolution fails so the expression is preserved in the graph rather than dropped. 0..*."@en ;
+    rdfs:comment "Literal fallback for patient expressions that could not be resolved to an Entity (e.g. common nouns). Complement to :hasPatient; used when Entity resolution fails so the expression is preserved in the graph rather than dropped. 0..*."@en ;
     rdfs:domain :Event ;
+    rdfs:range  xsd:string .
 
 :hasTheme rdf:type owl:ObjectProperty , skos:Concept ;
     rdfs:label "has theme"@en ;
