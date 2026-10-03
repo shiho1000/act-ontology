@@ -40,10 +40,10 @@ at:ActionTypeScheme rdf:type skos:ConceptScheme ;
     owl:versionInfo "1.0" ;
     dct:description """A taxonomy of action types for historical event knowledge graphs. Concepts are organized under 8 upper-level categories. Each ActionType is a skos:Concept; upper categories are also skos:Concept and serve as top concepts of this scheme."""@en ;
     # --- Scheme-level editorial notes (surface these at the top of generated guidelines) ---
-    skos:editorialNote """MULTILABEL: A separate resource (act_multilabel.ttl) records expressions that map to more than one ActionType. Multilabel is NOT expressed via skos:broader here (broader is reserved for the category hierarchy). See guideline section 'Multilabel'."""@en ;
+    skos:editorialNote """MULTILABEL: A separate resource (act_multilabel.ttl) records expressions that map to more than one ActionType. Multilabel is NOT expressed via skos:broader here (broader is reserved for the category hierarchy)."""@en ;
     skos:editorialNote """AFFIX NORMALIZATION RULES (type-level): 〜開始 => {head-class, Beginning} multilabel; 〜化 => Transformation by default; 再〜 => {stem-class, Repetition} multilabel; use Revival only when stem itself denotes restoration (復活・回復・再興); light verbs (する/なる/おく/うける) => General."""@en ;
     skos:editorialNote """KNOWN LIMITATION: This is a context-independent, type-level dictionary. Agent/Theme-dependent boundary cases (e.g. 派遣 Military vs Diplomatic) have no single type-level answer by design."""@en ;
-    skos:editorialNote """PROVISIONAL ITEMS: Authorization internal split (interpersonal vs institutional); CulturalExpression future split into CulturalProduction / ReligiousPractice (threshold n>=10); modern-era vocabulary gap (e.g. 打ち上げ). Rare classes with n<5 (Victory, Failure, Success, Release) were excluded from cross-validation in benchmarking."""@en .
+    skos:editorialNote """PROVISIONAL ITEMS: Authorization internal split (interpersonal vs institutional); CulturalExpression future split into CulturalProduction / ReligiousPractice (threshold n>=10); modern-era vocabulary gap (e.g. 打ち上げ)."""@en .
 
 #################################################################
 #  Upper-level Categories (8) — top concepts
