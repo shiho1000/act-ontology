@@ -1,0 +1,16 @@
+# シャープで始まる行はコメント（メモ）になります
+# 特定のファイルを無視
+# secret.txt
+
+# 特定のフォルダとその中身を丸ごと無視
+docs/
+kg_ttls/
+rawcsv/
+script/
+benchmark/data/
+cache/
+*.jsonl
+
+# 特定の拡張子を持つファイルをすべて無視
+#*.log
+#*.exe

@@ -1,0 +1,1935 @@
+{
+  "config": {
+    "n_folds": 5,
+    "seed": 42,
+    "centroid_mode": "mean",
+    "llm_include_examples": true,
+    "llm_catalog_mode": "fixed",
+    "gold_csv": "act_gold_v0_6_1.csv"
+  },
+  "n_expr": 574,
+  "n_single": 482,
+  "n_catalog_gap": 189,
+  "no_llm_bert": {
+    "single_macro_f1": 0.47690562198869363,
+    "single_accuracy": 0.5,
+    "single_per_class": {
+      "Abdication": {
+        "P": 0.6,
+        "R": 0.5,
+        "F1": 0.5455,
+        "support": 12
+      },
+      "Accession": {
+        "P": 0.5,
+        "R": 0.5833,
+        "F1": 0.5385,
+        "support": 12
+      },
+      "AssassinationMassacre": {
+        "P": 0.6923,
+        "R": 1.0,
+        "F1": 0.8182,
+        "support": 9
+      },
+      "Authorization": {
+        "P": 0.1667,
+        "R": 0.1667,
+        "F1": 0.1667,
+        "support": 6
+      },
+      "Beginning": {
+        "P": 0.3571,
+        "R": 0.5,
+        "F1": 0.4167,
+        "support": 10
+      },
+      "CaptureAndPunishment": {
+        "P": 0.6,
+        "R": 0.6,
+        "F1": 0.6,
+        "support": 15
+      },
+      "Communication": {
+        "P": 1.0,
+        "R": 0.2,
+        "F1": 0.3333,
+        "support": 5
+      },
+      "ConflictRupture": {
+        "P": 0.6667,
+        "R": 0.4444,
+        "F1": 0.5333,
+        "support": 9
+      },
+      "ConquestOccupation": {
+        "P": 0.6667,
+        "R": 0.4706,
+        "F1": 0.5517,
+        "support": 17
+      },
+      "ConstructionProduction": {
+        "P": 0.4167,
+        "R": 0.7143,
+        "F1": 0.5263,
+        "support": 7
+      },
+      "CulturalExpression": {
+        "P": 0.6667,
+        "R": 0.5714,
+        "F1": 0.6154,
+        "support": 14
+      },
+      "DeEscalation": {
+        "P": 0.0,
+        "R": 0.0,
+        "F1": 0.0,
+        "support": 1
+      },
+      "Death": {
+        "P": 0.5,
+        "R": 1.0,
+        "F1": 0.6667,
+        "support": 10
+      },
+      "Declaration": {
+        "P": 0.6,
+        "R": 0.375,
+        "F1": 0.4615,
+        "support": 8
+      },
+      "Defeat": {
+        "P": 0.6667,
+        "R": 0.2222,
+        "F1": 0.3333,
+        "support": 9
+      },
+      "DemandOrder": {
+        "P": 0.4375,
+        "R": 0.7,
+        "F1": 0.5385,
+        "support": 10
+      },
+      "DiplomaticNegotiation": {
+        "P": 0.5833,
+        "R": 0.4118,
+        "F1": 0.4828,
+        "support": 17
+      },
+      "DisputeConflict": {
+        "P": 0.5,
+        "R": 0.8182,
+        "F1": 0.6207,
+        "support": 11
+      },
+      "Dissolution": {
+        "P": 0.2727,
+        "R": 0.25,
+        "F1": 0.2609,
+        "support": 12
+      },
+      "Escalation": {
+        "P": 0.75,
+        "R": 0.3529,
+        "F1": 0.48,
+        "support": 17
+      },
+      "ExplorationDiscovery": {
+        "P": 0.7143,
+        "R": 0.625,
+        "F1": 0.6667,
+        "support": 8
+      },
+      "Failure": {
+        "P": 1.0,
+        "R": 0.3333,
+        "F1": 0.5,
+        "support": 3
+      },
+      "Foundation": {
+        "P": 0.6364,
+        "R": 0.6667,
+        "F1": 0.6512,
+        "support": 21
+      },
+      "General": {
+        "P": 0.2982,
+        "R": 0.3696,
+        "F1": 0.3301,
+        "support": 46
+      },
+      "IndependenceSeparation": {
+        "P": 0.6364,
+        "R": 1.0,
+        "F1": 0.7778,
+        "support": 7
+      },
+      "Legislation": {
+        "P": 0.6667,
+        "R": 0.25,
+        "F1": 0.3636,
+        "support": 16
+      },
+      "MilitaryAttack": {
+        "P": 0.5714,
+        "R": 0.4615,
+        "F1": 0.5106,
+        "support": 26
+      },
+      "Movement": {
+        "P": 0.6471,
+        "R": 0.4074,
+        "F1": 0.5,
+        "support": 27
+      },
+      "PossessionTransfer": {
+        "P": 0.5,
+        "R": 0.6667,
+        "F1": 0.5714,
+        "support": 6
+      },
+      "Rejection": {
+        "P": 0.3333,
+        "R": 0.3333,
+        "F1": 0.3333,
+        "support": 6
+      },
+      "Release": {
+        "P": 0.1,
+        "R": 0.2,
+        "F1": 0.1333,
+        "support": 5
+      },
+      "Repetition": {
+        "P": 0.0,
+        "R": 0.0,
+        "F1": 0.0,
+        "support": 1
+      },
+      "ResistanceProtest": {
+        "P": 0.6,
+        "R": 0.5,
+        "F1": 0.5455,
+        "support": 6
+      },
+      "Revival": {
+        "P": 0.6667,
+        "R": 0.4,
+        "F1": 0.5,
+        "support": 5
+      },
+      "RevoltInsurrection": {
+        "P": 0.8,
+        "R": 1.0,
+        "F1": 0.8889,
+        "support": 8
+      },
+      "ScientificInvention": {
+        "P": 0.5,
+        "R": 0.5,
+        "F1": 0.5,
+        "support": 6
+      },
+      "Subjugation": {
+        "P": 0.2857,
+        "R": 0.6667,
+        "F1": 0.4,
+        "support": 3
+      },
+      "Success": {
+        "P": 0.3333,
+        "R": 0.25,
+        "F1": 0.2857,
+        "support": 4
+      },
+      "Suppression": {
+        "P": 0.6154,
+        "R": 0.7273,
+        "F1": 0.6667,
+        "support": 11
+      },
+      "Suspension": {
+        "P": 0.3333,
+        "R": 0.1,
+        "F1": 0.1538,
+        "support": 10
+      },
+      "TradeEconomy": {
+        "P": 0.875,
+        "R": 0.4667,
+        "F1": 0.6087,
+        "support": 15
+      },
+      "Transformation": {
+        "P": 0.6154,
+        "R": 0.6667,
+        "F1": 0.64,
+        "support": 12
+      },
+      "TreatyAgreement": {
+        "P": 0.5,
+        "R": 0.4375,
+        "F1": 0.4667,
+        "support": 16
+      },
+      "Victory": {
+        "P": 0.3333,
+        "R": 1.0,
+        "F1": 0.5,
+        "support": 3
+      }
+    },
+    "n_single": 482,
+    "multi_example_f1": 0.4643437862950058,
+    "multi_macro_f1": 0.4607608462198526,
+    "multi_per_class": {
+      "Abdication": {
+        "P": 0.3636,
+        "R": 0.6154,
+        "F1": 0.4571,
+        "support": 13
+      },
+      "Accession": {
+        "P": 0.4583,
+        "R": 0.5789,
+        "F1": 0.5116,
+        "support": 19
+      },
+      "AssassinationMassacre": {
+        "P": 0.44,
+        "R": 1.0,
+        "F1": 0.6111,
+        "support": 11
+      },
+      "Authorization": {
+        "P": 0.3,
+        "R": 0.375,
+        "F1": 0.3333,
+        "support": 8
+      },
+      "Beginning": {
+        "P": 0.3692,
+        "R": 0.8276,
+        "F1": 0.5106,
+        "support": 29
+      },
+      "CaptureAndPunishment": {
+        "P": 0.3636,
+        "R": 0.8889,
+        "F1": 0.5161,
+        "support": 18
+      },
+      "Communication": {
+        "P": 0.3333,
+        "R": 0.2,
+        "F1": 0.25,
+        "support": 5
+      },
+      "ConflictRupture": {
+        "P": 0.4,
+        "R": 0.6,
+        "F1": 0.48,
+        "support": 10
+      },
+      "ConquestOccupation": {
+        "P": 0.4146,
+        "R": 0.6296,
+        "F1": 0.5,
+        "support": 27
+      },
+      "ConstructionProduction": {
+        "P": 0.4762,
+        "R": 0.9091,
+        "F1": 0.625,
+        "support": 11
+      },
+      "CulturalExpression": {
+        "P": 0.5357,
+        "R": 0.6818,
+        "F1": 0.6,
+        "support": 22
+      },
+      "DeEscalation": {
+        "P": 0.0385,
+        "R": 0.5,
+        "F1": 0.0714,
+        "support": 2
+      },
+      "Death": {
+        "P": 0.3448,
+        "R": 1.0,
+        "F1": 0.5128,
+        "support": 10
+      },
+      "Declaration": {
+        "P": 0.4211,
+        "R": 0.5714,
+        "F1": 0.4848,
+        "support": 14
+      },
+      "Defeat": {
+        "P": 0.4545,
+        "R": 0.7692,
+        "F1": 0.5714,
+        "support": 13
+      },
+      "DemandOrder": {
+        "P": 0.4091,
+        "R": 0.9,
+        "F1": 0.5625,
+        "support": 10
+      },
+      "DiplomaticNegotiation": {
+        "P": 0.4242,
+        "R": 0.6667,
+        "F1": 0.5185,
+        "support": 21
+      },
+      "DisputeConflict": {
+        "P": 0.3438,
+        "R": 0.6875,
+        "F1": 0.4583,
+        "support": 16
+      },
+      "Dissolution": {
+        "P": 0.2727,
+        "R": 0.4,
+        "F1": 0.3243,
+        "support": 15
+      },
+      "Escalation": {
+        "P": 0.4231,
+        "R": 0.6111,
+        "F1": 0.5,
+        "support": 18
+      },
+      "ExplorationDiscovery": {
+        "P": 0.3846,
+        "R": 0.5556,
+        "F1": 0.4545,
+        "support": 9
+      },
+      "Failure": {
+        "P": 0.5714,
+        "R": 1.0,
+        "F1": 0.7273,
+        "support": 4
+      },
+      "Foundation": {
+        "P": 0.375,
+        "R": 0.6667,
+        "F1": 0.48,
+        "support": 27
+      },
+      "General": {
+        "P": 0.25,
+        "R": 0.4906,
+        "F1": 0.3312,
+        "support": 53
+      },
+      "IndependenceSeparation": {
+        "P": 0.3929,
+        "R": 0.9167,
+        "F1": 0.55,
+        "support": 12
+      },
+      "Legislation": {
+        "P": 0.4737,
+        "R": 0.4091,
+        "F1": 0.439,
+        "support": 22
+      },
+      "MilitaryAttack": {
+        "P": 0.52,
+        "R": 0.5909,
+        "F1": 0.5532,
+        "support": 44
+      },
+      "Movement": {
+        "P": 0.4706,
+        "R": 0.5714,
+        "F1": 0.5161,
+        "support": 28
+      },
+      "PossessionTransfer": {
+        "P": 0.2174,
+        "R": 0.8333,
+        "F1": 0.3448,
+        "support": 6
+      },
+      "Rejection": {
+        "P": 0.2222,
+        "R": 0.6667,
+        "F1": 0.3333,
+        "support": 6
+      },
+      "Release": {
+        "P": 0.2353,
+        "R": 0.6667,
+        "F1": 0.3478,
+        "support": 12
+      },
+      "Repetition": {
+        "P": 0.3889,
+        "R": 0.6364,
+        "F1": 0.4828,
+        "support": 11
+      },
+      "ResistanceProtest": {
+        "P": 0.4167,
+        "R": 0.7143,
+        "F1": 0.5263,
+        "support": 7
+      },
+      "Revival": {
+        "P": 0.4167,
+        "R": 0.625,
+        "F1": 0.5,
+        "support": 8
+      },
+      "RevoltInsurrection": {
+        "P": 0.36,
+        "R": 1.0,
+        "F1": 0.5294,
+        "support": 9
+      },
+      "ScientificInvention": {
+        "P": 0.5,
+        "R": 0.625,
+        "F1": 0.5556,
+        "support": 8
+      },
+      "Subjugation": {
+        "P": 0.1176,
+        "R": 0.6667,
+        "F1": 0.2,
+        "support": 3
+      },
+      "Success": {
+        "P": 0.2,
+        "R": 0.4,
+        "F1": 0.2667,
+        "support": 5
+      },
+      "Suppression": {
+        "P": 0.4194,
+        "R": 0.6842,
+        "F1": 0.52,
+        "support": 19
+      },
+      "Suspension": {
+        "P": 0.5833,
+        "R": 0.4375,
+        "F1": 0.5,
+        "support": 16
+      },
+      "TradeEconomy": {
+        "P": 0.5714,
+        "R": 0.4615,
+        "F1": 0.5106,
+        "support": 26
+      },
+      "Transformation": {
+        "P": 0.375,
+        "R": 0.7059,
+        "F1": 0.4898,
+        "support": 17
+      },
+      "TreatyAgreement": {
+        "P": 0.3333,
+        "R": 0.5,
+        "F1": 0.4,
+        "support": 20
+      },
+      "Victory": {
+        "P": 0.2727,
+        "R": 0.375,
+        "F1": 0.3158,
+        "support": 8
+      }
+    },
+    "n_multi": 574,
+    "catalog_gap": {
+      "single_macro_f1": 0.3465954482324521,
+      "single_accuracy": 0.38095238095238093,
+      "single_per_class": {
+        "Abdication": {
+          "P": 0.5,
+          "R": 0.75,
+          "F1": 0.6,
+          "support": 4
+        },
+        "Accession": {
+          "P": 0.25,
+          "R": 0.2,
+          "F1": 0.2222,
+          "support": 5
+        },
+        "AssassinationMassacre": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 2
+        },
+        "Authorization": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Beginning": {
+          "P": 0.125,
+          "R": 0.3333,
+          "F1": 0.1818,
+          "support": 3
+        },
+        "CaptureAndPunishment": {
+          "P": 0.7143,
+          "R": 0.8333,
+          "F1": 0.7692,
+          "support": 6
+        },
+        "ConflictRupture": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 2
+        },
+        "ConquestOccupation": {
+          "P": 0.6667,
+          "R": 0.4444,
+          "F1": 0.5333,
+          "support": 9
+        },
+        "CulturalExpression": {
+          "P": 0.3333,
+          "R": 0.25,
+          "F1": 0.2857,
+          "support": 4
+        },
+        "Death": {
+          "P": 0.3333,
+          "R": 1.0,
+          "F1": 0.5,
+          "support": 2
+        },
+        "Declaration": {
+          "P": 0.5,
+          "R": 0.5,
+          "F1": 0.5,
+          "support": 2
+        },
+        "Defeat": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 3
+        },
+        "DemandOrder": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 2
+        },
+        "DiplomaticNegotiation": {
+          "P": 0.6,
+          "R": 0.375,
+          "F1": 0.4615,
+          "support": 8
+        },
+        "DisputeConflict": {
+          "P": 0.3,
+          "R": 0.75,
+          "F1": 0.4286,
+          "support": 4
+        },
+        "Dissolution": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 3
+        },
+        "Escalation": {
+          "P": 0.6667,
+          "R": 0.2222,
+          "F1": 0.3333,
+          "support": 9
+        },
+        "ExplorationDiscovery": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Failure": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Foundation": {
+          "P": 0.7273,
+          "R": 0.6667,
+          "F1": 0.6957,
+          "support": 12
+        },
+        "General": {
+          "P": 0.3514,
+          "R": 0.3611,
+          "F1": 0.3562,
+          "support": 36
+        },
+        "IndependenceSeparation": {
+          "P": 0.5,
+          "R": 1.0,
+          "F1": 0.6667,
+          "support": 1
+        },
+        "Legislation": {
+          "P": 1.0,
+          "R": 0.1429,
+          "F1": 0.25,
+          "support": 7
+        },
+        "MilitaryAttack": {
+          "P": 0.6,
+          "R": 0.3529,
+          "F1": 0.4444,
+          "support": 17
+        },
+        "Movement": {
+          "P": 0.75,
+          "R": 0.375,
+          "F1": 0.5,
+          "support": 16
+        },
+        "Rejection": {
+          "P": 0.3333,
+          "R": 1.0,
+          "F1": 0.5,
+          "support": 1
+        },
+        "RevoltInsurrection": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        },
+        "Success": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Suppression": {
+          "P": 0.6,
+          "R": 0.6,
+          "F1": 0.6,
+          "support": 5
+        },
+        "Suspension": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "TradeEconomy": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 5
+        },
+        "Transformation": {
+          "P": 0.3333,
+          "R": 0.3333,
+          "F1": 0.3333,
+          "support": 6
+        },
+        "TreatyAgreement": {
+          "P": 1.0,
+          "R": 0.125,
+          "F1": 0.2222,
+          "support": 8
+        },
+        "Victory": {
+          "P": 0.25,
+          "R": 1.0,
+          "F1": 0.4,
+          "support": 1
+        }
+      },
+      "n_single": 189,
+      "multi_example_f1": 0.38447971781305107,
+      "multi_macro_f1": 0.3655218517778106,
+      "multi_per_class": {
+        "Abdication": {
+          "P": 0.5,
+          "R": 1.0,
+          "F1": 0.6667,
+          "support": 4
+        },
+        "Accession": {
+          "P": 0.1429,
+          "R": 0.2,
+          "F1": 0.1667,
+          "support": 5
+        },
+        "AssassinationMassacre": {
+          "P": 0.3333,
+          "R": 1.0,
+          "F1": 0.5,
+          "support": 2
+        },
+        "Authorization": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Beginning": {
+          "P": 0.0833,
+          "R": 0.6667,
+          "F1": 0.1481,
+          "support": 3
+        },
+        "CaptureAndPunishment": {
+          "P": 0.3333,
+          "R": 0.8333,
+          "F1": 0.4762,
+          "support": 6
+        },
+        "ConflictRupture": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 2
+        },
+        "ConquestOccupation": {
+          "P": 0.5333,
+          "R": 0.8889,
+          "F1": 0.6667,
+          "support": 9
+        },
+        "CulturalExpression": {
+          "P": 0.1429,
+          "R": 0.25,
+          "F1": 0.1818,
+          "support": 4
+        },
+        "Death": {
+          "P": 0.1818,
+          "R": 1.0,
+          "F1": 0.3077,
+          "support": 2
+        },
+        "Declaration": {
+          "P": 0.3333,
+          "R": 0.5,
+          "F1": 0.4,
+          "support": 2
+        },
+        "Defeat": {
+          "P": 0.2857,
+          "R": 0.6667,
+          "F1": 0.4,
+          "support": 3
+        },
+        "DemandOrder": {
+          "P": 0.25,
+          "R": 0.5,
+          "F1": 0.3333,
+          "support": 2
+        },
+        "DiplomaticNegotiation": {
+          "P": 0.5385,
+          "R": 0.875,
+          "F1": 0.6667,
+          "support": 8
+        },
+        "DisputeConflict": {
+          "P": 0.2727,
+          "R": 0.75,
+          "F1": 0.4,
+          "support": 4
+        },
+        "Dissolution": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 3
+        },
+        "Escalation": {
+          "P": 0.6364,
+          "R": 0.7778,
+          "F1": 0.7,
+          "support": 9
+        },
+        "ExplorationDiscovery": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Failure": {
+          "P": 0.5,
+          "R": 1.0,
+          "F1": 0.6667,
+          "support": 1
+        },
+        "Foundation": {
+          "P": 0.4762,
+          "R": 0.8333,
+          "F1": 0.6061,
+          "support": 12
+        },
+        "General": {
+          "P": 0.3019,
+          "R": 0.4444,
+          "F1": 0.3596,
+          "support": 36
+        },
+        "IndependenceSeparation": {
+          "P": 0.25,
+          "R": 1.0,
+          "F1": 0.4,
+          "support": 1
+        },
+        "Legislation": {
+          "P": 0.3333,
+          "R": 0.2857,
+          "F1": 0.3077,
+          "support": 7
+        },
+        "MilitaryAttack": {
+          "P": 0.5294,
+          "R": 0.5294,
+          "F1": 0.5294,
+          "support": 17
+        },
+        "Movement": {
+          "P": 0.6667,
+          "R": 0.625,
+          "F1": 0.6452,
+          "support": 16
+        },
+        "Rejection": {
+          "P": 0.2,
+          "R": 1.0,
+          "F1": 0.3333,
+          "support": 1
+        },
+        "RevoltInsurrection": {
+          "P": 0.1429,
+          "R": 1.0,
+          "F1": 0.25,
+          "support": 1
+        },
+        "Success": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Suppression": {
+          "P": 0.3636,
+          "R": 0.8,
+          "F1": 0.5,
+          "support": 5
+        },
+        "Suspension": {
+          "P": 0.3333,
+          "R": 1.0,
+          "F1": 0.5,
+          "support": 1
+        },
+        "TradeEconomy": {
+          "P": 0.5,
+          "R": 0.2,
+          "F1": 0.2857,
+          "support": 5
+        },
+        "Transformation": {
+          "P": 0.25,
+          "R": 0.5,
+          "F1": 0.3333,
+          "support": 6
+        },
+        "TreatyAgreement": {
+          "P": 0.6667,
+          "R": 0.25,
+          "F1": 0.3636,
+          "support": 8
+        },
+        "Victory": {
+          "P": 0.2,
+          "R": 1.0,
+          "F1": 0.3333,
+          "support": 1
+        }
+      },
+      "n_multi": 189
+    },
+    "abstain_multi": 0
+  },
+  "llm_gemini": {
+    "single_macro_f1": 0.903833048004158,
+    "single_accuracy": 0.8692946058091287,
+    "single_per_class": {
+      "Abdication": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 12
+      },
+      "Accession": {
+        "P": 1.0,
+        "R": 0.6667,
+        "F1": 0.8,
+        "support": 12
+      },
+      "AssassinationMassacre": {
+        "P": 1.0,
+        "R": 0.8889,
+        "F1": 0.9412,
+        "support": 9
+      },
+      "Authorization": {
+        "P": 0.5556,
+        "R": 0.8333,
+        "F1": 0.6667,
+        "support": 6
+      },
+      "Beginning": {
+        "P": 0.7692,
+        "R": 1.0,
+        "F1": 0.8696,
+        "support": 10
+      },
+      "CaptureAndPunishment": {
+        "P": 0.8125,
+        "R": 0.8667,
+        "F1": 0.8387,
+        "support": 15
+      },
+      "Communication": {
+        "P": 0.5,
+        "R": 1.0,
+        "F1": 0.6667,
+        "support": 5
+      },
+      "ConflictRupture": {
+        "P": 0.9,
+        "R": 1.0,
+        "F1": 0.9474,
+        "support": 9
+      },
+      "ConquestOccupation": {
+        "P": 1.0,
+        "R": 0.8824,
+        "F1": 0.9375,
+        "support": 17
+      },
+      "ConstructionProduction": {
+        "P": 0.7778,
+        "R": 1.0,
+        "F1": 0.875,
+        "support": 7
+      },
+      "CulturalExpression": {
+        "P": 0.9231,
+        "R": 0.8571,
+        "F1": 0.8889,
+        "support": 14
+      },
+      "DeEscalation": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 1
+      },
+      "Death": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 10
+      },
+      "Declaration": {
+        "P": 1.0,
+        "R": 0.75,
+        "F1": 0.8571,
+        "support": 8
+      },
+      "Defeat": {
+        "P": 0.9,
+        "R": 1.0,
+        "F1": 0.9474,
+        "support": 9
+      },
+      "DemandOrder": {
+        "P": 0.9091,
+        "R": 1.0,
+        "F1": 0.9524,
+        "support": 10
+      },
+      "DiplomaticNegotiation": {
+        "P": 1.0,
+        "R": 0.7059,
+        "F1": 0.8276,
+        "support": 17
+      },
+      "DisputeConflict": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 11
+      },
+      "Dissolution": {
+        "P": 0.75,
+        "R": 1.0,
+        "F1": 0.8571,
+        "support": 12
+      },
+      "Escalation": {
+        "P": 0.8947,
+        "R": 1.0,
+        "F1": 0.9444,
+        "support": 17
+      },
+      "ExplorationDiscovery": {
+        "P": 1.0,
+        "R": 0.875,
+        "F1": 0.9333,
+        "support": 8
+      },
+      "Failure": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 3
+      },
+      "Foundation": {
+        "P": 0.8947,
+        "R": 0.8095,
+        "F1": 0.85,
+        "support": 21
+      },
+      "General": {
+        "P": 0.6279,
+        "R": 0.587,
+        "F1": 0.6067,
+        "support": 46
+      },
+      "IndependenceSeparation": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 7
+      },
+      "Legislation": {
+        "P": 1.0,
+        "R": 0.625,
+        "F1": 0.7692,
+        "support": 16
+      },
+      "MilitaryAttack": {
+        "P": 0.8889,
+        "R": 0.9231,
+        "F1": 0.9057,
+        "support": 26
+      },
+      "Movement": {
+        "P": 0.7931,
+        "R": 0.8519,
+        "F1": 0.8214,
+        "support": 27
+      },
+      "PossessionTransfer": {
+        "P": 0.75,
+        "R": 1.0,
+        "F1": 0.8571,
+        "support": 6
+      },
+      "Rejection": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 6
+      },
+      "Release": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 5
+      },
+      "Repetition": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 1
+      },
+      "ResistanceProtest": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 6
+      },
+      "Revival": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 5
+      },
+      "RevoltInsurrection": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 8
+      },
+      "ScientificInvention": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 6
+      },
+      "Subjugation": {
+        "P": 0.75,
+        "R": 1.0,
+        "F1": 0.8571,
+        "support": 3
+      },
+      "Success": {
+        "P": 1.0,
+        "R": 0.75,
+        "F1": 0.8571,
+        "support": 4
+      },
+      "Suppression": {
+        "P": 0.8333,
+        "R": 0.9091,
+        "F1": 0.8696,
+        "support": 11
+      },
+      "Suspension": {
+        "P": 0.9091,
+        "R": 1.0,
+        "F1": 0.9524,
+        "support": 10
+      },
+      "TradeEconomy": {
+        "P": 1.0,
+        "R": 0.8667,
+        "F1": 0.9286,
+        "support": 15
+      },
+      "Transformation": {
+        "P": 0.7857,
+        "R": 0.9167,
+        "F1": 0.8462,
+        "support": 12
+      },
+      "TreatyAgreement": {
+        "P": 1.0,
+        "R": 0.8125,
+        "F1": 0.8966,
+        "support": 16
+      },
+      "Victory": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 3
+      }
+    },
+    "n_single": 482,
+    "multi_example_f1": 0.8150406504065041,
+    "multi_macro_f1": 0.8046039538029839,
+    "multi_per_class": {
+      "Abdication": {
+        "P": 1.0,
+        "R": 0.9231,
+        "F1": 0.96,
+        "support": 13
+      },
+      "Accession": {
+        "P": 1.0,
+        "R": 0.5263,
+        "F1": 0.6897,
+        "support": 19
+      },
+      "AssassinationMassacre": {
+        "P": 0.9091,
+        "R": 0.9091,
+        "F1": 0.9091,
+        "support": 11
+      },
+      "Authorization": {
+        "P": 0.6364,
+        "R": 0.875,
+        "F1": 0.7368,
+        "support": 8
+      },
+      "Beginning": {
+        "P": 0.8235,
+        "R": 0.9655,
+        "F1": 0.8889,
+        "support": 29
+      },
+      "CaptureAndPunishment": {
+        "P": 0.8,
+        "R": 0.8889,
+        "F1": 0.8421,
+        "support": 18
+      },
+      "Communication": {
+        "P": 0.4167,
+        "R": 1.0,
+        "F1": 0.5882,
+        "support": 5
+      },
+      "ConflictRupture": {
+        "P": 0.8333,
+        "R": 1.0,
+        "F1": 0.9091,
+        "support": 10
+      },
+      "ConquestOccupation": {
+        "P": 1.0,
+        "R": 0.6667,
+        "F1": 0.8,
+        "support": 27
+      },
+      "ConstructionProduction": {
+        "P": 0.6111,
+        "R": 1.0,
+        "F1": 0.7586,
+        "support": 11
+      },
+      "CulturalExpression": {
+        "P": 0.8571,
+        "R": 0.8182,
+        "F1": 0.8372,
+        "support": 22
+      },
+      "DeEscalation": {
+        "P": 0.3333,
+        "R": 1.0,
+        "F1": 0.5,
+        "support": 2
+      },
+      "Death": {
+        "P": 0.9091,
+        "R": 1.0,
+        "F1": 0.9524,
+        "support": 10
+      },
+      "Declaration": {
+        "P": 1.0,
+        "R": 0.9286,
+        "F1": 0.963,
+        "support": 14
+      },
+      "Defeat": {
+        "P": 0.75,
+        "R": 0.9231,
+        "F1": 0.8276,
+        "support": 13
+      },
+      "DemandOrder": {
+        "P": 0.9091,
+        "R": 1.0,
+        "F1": 0.9524,
+        "support": 10
+      },
+      "DiplomaticNegotiation": {
+        "P": 0.7895,
+        "R": 0.7143,
+        "F1": 0.75,
+        "support": 21
+      },
+      "DisputeConflict": {
+        "P": 0.8667,
+        "R": 0.8125,
+        "F1": 0.8387,
+        "support": 16
+      },
+      "Dissolution": {
+        "P": 0.5172,
+        "R": 1.0,
+        "F1": 0.6818,
+        "support": 15
+      },
+      "Escalation": {
+        "P": 0.75,
+        "R": 1.0,
+        "F1": 0.8571,
+        "support": 18
+      },
+      "ExplorationDiscovery": {
+        "P": 1.0,
+        "R": 0.8889,
+        "F1": 0.9412,
+        "support": 9
+      },
+      "Failure": {
+        "P": 1.0,
+        "R": 1.0,
+        "F1": 1.0,
+        "support": 4
+      },
+      "Foundation": {
+        "P": 0.9167,
+        "R": 0.8148,
+        "F1": 0.8627,
+        "support": 27
+      },
+      "General": {
+        "P": 0.569,
+        "R": 0.6226,
+        "F1": 0.5946,
+        "support": 53
+      },
+      "IndependenceSeparation": {
+        "P": 1.0,
+        "R": 0.9167,
+        "F1": 0.9565,
+        "support": 12
+      },
+      "Legislation": {
+        "P": 0.7647,
+        "R": 0.5909,
+        "F1": 0.6667,
+        "support": 22
+      },
+      "MilitaryAttack": {
+        "P": 0.825,
+        "R": 0.75,
+        "F1": 0.7857,
+        "support": 44
+      },
+      "Movement": {
+        "P": 0.6047,
+        "R": 0.9286,
+        "F1": 0.7324,
+        "support": 28
+      },
+      "PossessionTransfer": {
+        "P": 0.5455,
+        "R": 1.0,
+        "F1": 0.7059,
+        "support": 6
+      },
+      "Rejection": {
+        "P": 0.8571,
+        "R": 1.0,
+        "F1": 0.9231,
+        "support": 6
+      },
+      "Release": {
+        "P": 0.875,
+        "R": 0.5833,
+        "F1": 0.7,
+        "support": 12
+      },
+      "Repetition": {
+        "P": 0.8,
+        "R": 0.7273,
+        "F1": 0.7619,
+        "support": 11
+      },
+      "ResistanceProtest": {
+        "P": 0.875,
+        "R": 1.0,
+        "F1": 0.9333,
+        "support": 7
+      },
+      "Revival": {
+        "P": 0.8889,
+        "R": 1.0,
+        "F1": 0.9412,
+        "support": 8
+      },
+      "RevoltInsurrection": {
+        "P": 1.0,
+        "R": 0.8889,
+        "F1": 0.9412,
+        "support": 9
+      },
+      "ScientificInvention": {
+        "P": 0.8571,
+        "R": 0.75,
+        "F1": 0.8,
+        "support": 8
+      },
+      "Subjugation": {
+        "P": 0.4286,
+        "R": 1.0,
+        "F1": 0.6,
+        "support": 3
+      },
+      "Success": {
+        "P": 0.6667,
+        "R": 0.8,
+        "F1": 0.7273,
+        "support": 5
+      },
+      "Suppression": {
+        "P": 0.8125,
+        "R": 0.6842,
+        "F1": 0.7429,
+        "support": 19
+      },
+      "Suspension": {
+        "P": 0.6875,
+        "R": 0.6875,
+        "F1": 0.6875,
+        "support": 16
+      },
+      "TradeEconomy": {
+        "P": 0.9474,
+        "R": 0.6923,
+        "F1": 0.8,
+        "support": 26
+      },
+      "Transformation": {
+        "P": 0.7143,
+        "R": 0.8824,
+        "F1": 0.7895,
+        "support": 17
+      },
+      "TreatyAgreement": {
+        "P": 0.8667,
+        "R": 0.65,
+        "F1": 0.7429,
+        "support": 20
+      },
+      "Victory": {
+        "P": 0.7778,
+        "R": 0.875,
+        "F1": 0.8235,
+        "support": 8
+      }
+    },
+    "n_multi": 574,
+    "catalog_gap": {
+      "single_macro_f1": 0.6732819027670088,
+      "single_accuracy": 0.6666666666666666,
+      "single_per_class": {
+        "Abdication": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 4
+        },
+        "Accession": {
+          "P": 1.0,
+          "R": 0.2,
+          "F1": 0.3333,
+          "support": 5
+        },
+        "AssassinationMassacre": {
+          "P": 1.0,
+          "R": 0.5,
+          "F1": 0.6667,
+          "support": 2
+        },
+        "Authorization": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Beginning": {
+          "P": 0.5,
+          "R": 1.0,
+          "F1": 0.6667,
+          "support": 3
+        },
+        "CaptureAndPunishment": {
+          "P": 0.5714,
+          "R": 0.6667,
+          "F1": 0.6154,
+          "support": 6
+        },
+        "ConflictRupture": {
+          "P": 0.6667,
+          "R": 1.0,
+          "F1": 0.8,
+          "support": 2
+        },
+        "ConquestOccupation": {
+          "P": 1.0,
+          "R": 0.7778,
+          "F1": 0.875,
+          "support": 9
+        },
+        "CulturalExpression": {
+          "P": 0.6667,
+          "R": 0.5,
+          "F1": 0.5714,
+          "support": 4
+        },
+        "Death": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 2
+        },
+        "Declaration": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 2
+        },
+        "Defeat": {
+          "P": 0.75,
+          "R": 1.0,
+          "F1": 0.8571,
+          "support": 3
+        },
+        "DemandOrder": {
+          "P": 0.6667,
+          "R": 1.0,
+          "F1": 0.8,
+          "support": 2
+        },
+        "DiplomaticNegotiation": {
+          "P": 1.0,
+          "R": 0.375,
+          "F1": 0.5455,
+          "support": 8
+        },
+        "DisputeConflict": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 4
+        },
+        "Dissolution": {
+          "P": 0.4286,
+          "R": 1.0,
+          "F1": 0.6,
+          "support": 3
+        },
+        "Escalation": {
+          "P": 0.8182,
+          "R": 1.0,
+          "F1": 0.9,
+          "support": 9
+        },
+        "ExplorationDiscovery": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Failure": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        },
+        "Foundation": {
+          "P": 0.8,
+          "R": 0.6667,
+          "F1": 0.7273,
+          "support": 12
+        },
+        "General": {
+          "P": 0.5152,
+          "R": 0.4722,
+          "F1": 0.4928,
+          "support": 36
+        },
+        "IndependenceSeparation": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        },
+        "Legislation": {
+          "P": 1.0,
+          "R": 0.1429,
+          "F1": 0.25,
+          "support": 7
+        },
+        "MilitaryAttack": {
+          "P": 0.8333,
+          "R": 0.8824,
+          "F1": 0.8571,
+          "support": 17
+        },
+        "Movement": {
+          "P": 0.6667,
+          "R": 0.75,
+          "F1": 0.7059,
+          "support": 16
+        },
+        "Rejection": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        },
+        "RevoltInsurrection": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        },
+        "Success": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Suppression": {
+          "P": 0.6667,
+          "R": 0.8,
+          "F1": 0.7273,
+          "support": 5
+        },
+        "Suspension": {
+          "P": 0.5,
+          "R": 1.0,
+          "F1": 0.6667,
+          "support": 1
+        },
+        "TradeEconomy": {
+          "P": 1.0,
+          "R": 0.6,
+          "F1": 0.75,
+          "support": 5
+        },
+        "Transformation": {
+          "P": 0.625,
+          "R": 0.8333,
+          "F1": 0.7143,
+          "support": 6
+        },
+        "TreatyAgreement": {
+          "P": 1.0,
+          "R": 0.625,
+          "F1": 0.7692,
+          "support": 8
+        },
+        "Victory": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        }
+      },
+      "n_single": 189,
+      "multi_example_f1": 0.6507936507936508,
+      "multi_macro_f1": 0.6852537700886213,
+      "multi_per_class": {
+        "Abdication": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 4
+        },
+        "Accession": {
+          "P": 1.0,
+          "R": 0.2,
+          "F1": 0.3333,
+          "support": 5
+        },
+        "AssassinationMassacre": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 2
+        },
+        "Authorization": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Beginning": {
+          "P": 0.375,
+          "R": 1.0,
+          "F1": 0.5455,
+          "support": 3
+        },
+        "CaptureAndPunishment": {
+          "P": 0.5,
+          "R": 0.6667,
+          "F1": 0.5714,
+          "support": 6
+        },
+        "ConflictRupture": {
+          "P": 0.6667,
+          "R": 1.0,
+          "F1": 0.8,
+          "support": 2
+        },
+        "ConquestOccupation": {
+          "P": 1.0,
+          "R": 0.7778,
+          "F1": 0.875,
+          "support": 9
+        },
+        "CulturalExpression": {
+          "P": 0.4,
+          "R": 0.5,
+          "F1": 0.4444,
+          "support": 4
+        },
+        "Death": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 2
+        },
+        "Declaration": {
+          "P": 1.0,
+          "R": 0.5,
+          "F1": 0.6667,
+          "support": 2
+        },
+        "Defeat": {
+          "P": 0.6,
+          "R": 1.0,
+          "F1": 0.75,
+          "support": 3
+        },
+        "DemandOrder": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 2
+        },
+        "DiplomaticNegotiation": {
+          "P": 0.7143,
+          "R": 0.625,
+          "F1": 0.6667,
+          "support": 8
+        },
+        "DisputeConflict": {
+          "P": 0.6667,
+          "R": 1.0,
+          "F1": 0.8,
+          "support": 4
+        },
+        "Dissolution": {
+          "P": 0.3,
+          "R": 1.0,
+          "F1": 0.4615,
+          "support": 3
+        },
+        "Escalation": {
+          "P": 0.75,
+          "R": 1.0,
+          "F1": 0.8571,
+          "support": 9
+        },
+        "ExplorationDiscovery": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Failure": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        },
+        "Foundation": {
+          "P": 0.8182,
+          "R": 0.75,
+          "F1": 0.7826,
+          "support": 12
+        },
+        "General": {
+          "P": 0.4737,
+          "R": 0.5,
+          "F1": 0.4865,
+          "support": 36
+        },
+        "IndependenceSeparation": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        },
+        "Legislation": {
+          "P": 0.5,
+          "R": 0.2857,
+          "F1": 0.3636,
+          "support": 7
+        },
+        "MilitaryAttack": {
+          "P": 0.7368,
+          "R": 0.8235,
+          "F1": 0.7778,
+          "support": 17
+        },
+        "Movement": {
+          "P": 0.56,
+          "R": 0.875,
+          "F1": 0.6829,
+          "support": 16
+        },
+        "Rejection": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        },
+        "RevoltInsurrection": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        },
+        "Success": {
+          "P": 0.0,
+          "R": 0.0,
+          "F1": 0.0,
+          "support": 1
+        },
+        "Suppression": {
+          "P": 0.625,
+          "R": 1.0,
+          "F1": 0.7692,
+          "support": 5
+        },
+        "Suspension": {
+          "P": 0.25,
+          "R": 1.0,
+          "F1": 0.4,
+          "support": 1
+        },
+        "TradeEconomy": {
+          "P": 1.0,
+          "R": 0.6,
+          "F1": 0.75,
+          "support": 5
+        },
+        "Transformation": {
+          "P": 0.6667,
+          "R": 1.0,
+          "F1": 0.8,
+          "support": 6
+        },
+        "TreatyAgreement": {
+          "P": 0.8333,
+          "R": 0.625,
+          "F1": 0.7143,
+          "support": 8
+        },
+        "Victory": {
+          "P": 1.0,
+          "R": 1.0,
+          "F1": 1.0,
+          "support": 1
+        }
+      },
+      "n_multi": 189
+    },
+    "single_label_violations": 0
+  }
+}
