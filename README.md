@@ -62,12 +62,12 @@ python pipeline/act_etl.py path/to/corpus.csv out/corpus_data.ttl
 python pipeline/act_etl.py path/to/corpus.csv out/corpus_data.ttl --apply-review out/corpus_data_classification_review.csv
 ```
 
-The input is a CSV in long format, with one row for each link between an event and a participant. The docstring of `pipeline/act_etl.py` describes the expected columns, the outputs and the settings.
+The input is a CSV in long format, with one row for each link between an event and a role. The docstring of `pipeline/act_etl.py` describes the expected columns, the outputs and the settings.
 
 ## Evaluation
 
-- `evaluation/benchmark.ipynb` reproduces the benchmark of the first version of the taxonomy (section 4.2 of the thesis): majority class, character n-grams, Japanese WordNet, Tohoku BERT v3, K-means clustering and four LLMs. It writes the prompt given to the LLMs to `evaluation/prompt.md`.
-- `evaluation/eval_classify.py` evaluates the classifiers of the pipeline against the ground truth with five-fold cross-validation (section 4.3.3). Run `python evaluation/eval_classify.py --bert --llm`. The aggregate results are in `eval_report.md` and `eval_results.json`.
+- `evaluation/benchmark.ipynb` reproduces the benchmark of the first version of the taxonomy: majority class, character n-grams, Japanese WordNet, Tohoku BERT v3, K-means clustering and four LLMs. It writes the prompt given to the LLMs to `evaluation/prompt.md`.
+- `evaluation/eval_classify.py` evaluates the classifiers of the pipeline against the ground truth with five-fold cross-validation. Run `python evaluation/eval_classify.py --bert --llm`. The aggregate results are in `eval_report.md` and `eval_results.json`.
 
 Both need data that this repository does not include (see below). Place the files in `evaluation/data/`, as listed in `evaluation/data/README.md`.
 
