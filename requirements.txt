@@ -1,0 +1,16 @@
+# Vocabulary and pipeline
+rdflib
+ 
+# BERT classifier (Tohoku BERT v3: cl-tohoku/bert-base-japanese-v3)
+torch
+transformers
+fugashi
+unidic-lite
+ 
+# Evaluation and analysis
+numpy
+pandas
+scikit-learn
+matplotlib
+nltk
+jupyter

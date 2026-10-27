@@ -72,16 +72,22 @@ import unicodedata
 import urllib.error
 from collections import defaultdict, Counter
 
+from pathlib import Path
+
 # Reuse production primitives so the harness measures the real classifiers,
 # not a re-implementation. (BERT/Gemini are only touched when --bert/--llm set.)
+EVAL_DIR = Path(__file__).resolve().parent
+REPO_DIR = EVAL_DIR.parent
+sys.path.insert(0, str(REPO_DIR / "pipeline"))
 import act_classifiers as AC
 
 # ==========================================================================
 # CONFIG
 # ==========================================================================
-TAXONOMY_TTL   = https://raw.githubusercontent.com/shiho1000/act-ontology/master/act_ontology.ttl
-MULTILABEL_TTL = https://raw.githubusercontent.com/shiho1000/act-ontology/master/act_multilabel.ttl
-GOLD_CSV       = "gold.csv"   # frozen G-T (expression -> action_types), catalog-authoritative
+TAXONOMY_TTL   = AC.TAXONOMY_TTL      # act_taxonomy.ttl at the repository top
+MULTILABEL_TTL = AC.MULTILABEL_TTL    # act_multilabel.ttl at the repository top
+DATA_DIR       = EVAL_DIR / "data"    # not public (derived from the COTEN History DB)
+GOLD_CSV       = DATA_DIR / "gold.csv"   # frozen G-T (expression -> action_types), catalog-authoritative
 
 N_FOLDS  = 5
 SEED     = 42                      # fixed for reproducibility (Phase 1 also used 5-fold+seed;
@@ -92,7 +98,7 @@ BERT_CENTROID_MODE   = "mean"      # "mean" (true nearest-centroid) | "bag" (pro
 BERT_INCLUDE_LABEL_TEXT = True     # add prefLabel+definition as extra prototype signal
 BERT_SIM_THRESHOLD   = AC.BERT_SIM_THRESHOLD
 BERT_TOPK            = AC.BERT_TOPK
-BERT_CACHE           = "bert_predictions_cache.json"   # per-(seed,centroid_mode) predictions.
+BERT_CACHE           = REPO_DIR / "cache" / "bert_predictions_cache.json"   # per-(seed,centroid_mode) predictions.
                                                        # BERT is deterministic given the fold
                                                        # split + centroid mode, so once computed
                                                        # the whole run can be skipped entirely.
@@ -125,8 +131,8 @@ LLM_VARIANT = "baseline"    # "baseline" | "withdef"
 
 _LLM_VARIANT_CONFIG = {
     "baseline": {"catalog": AC.LLM_CATALOG_MD, "cache": AC.LLM_CACHE, "model_suffix": ""},
-    "withdef":  {"catalog": "act_llm_catalog_with_def.md",
-                "cache": "llm_cache_with_def.jsonl", "model_suffix": "+withdef"},
+    "withdef":  {"catalog": REPO_DIR / "artifacts" / "act_llm_catalog_with_def.md",
+                "cache": REPO_DIR / "cache" / "llm_cache_with_def.jsonl", "model_suffix": "+withdef"},
 }
 GEMINI_CACHE         = AC.LLM_CACHE  # used by "fold" mode only; "fixed" mode resolves its
                                      # own cache/catalog/model from _LLM_VARIANT_CONFIG below
@@ -137,8 +143,8 @@ def _resolve_llm_variant():
     model = AC.GEMINI_MODEL + cfg["model_suffix"]
     return cfg["catalog"], cfg["cache"], model
 
-OUT_REPORT = "eval_report.md"
-OUT_JSON   = "eval_results.json"
+OUT_REPORT = EVAL_DIR / "eval_report.md"
+OUT_JSON   = EVAL_DIR / "eval_results.json"
 
 SKOS = "http://www.w3.org/2004/02/skos/core#"
 
@@ -511,6 +517,7 @@ def _load_bert_cache():
 
 
 def _save_bert_cache(predictions):
+    BERT_CACHE.parent.mkdir(parents=True, exist_ok=True)
     with open(BERT_CACHE, "w", encoding="utf-8") as f:
         json.dump({"key": _bert_cache_key(), "predictions": predictions}, f, ensure_ascii=False)
 
@@ -671,8 +678,9 @@ def _dump_predictions(rows_single, use_bert, use_llm):
     review list requested for human inspection before touching gold/catalog."""
     import csv as _csv
     suf = _out_suffix(use_llm)
-    pred_path = f"predictions_single{suf}.csv"
-    wrong_path = f"both_wrong{suf}.csv"
+    pred_path = DATA_DIR / f"predictions_single{suf}.csv"   # lists expressions: not public
+    wrong_path = DATA_DIR / f"both_wrong{suf}.csv"
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
     with open(pred_path, "w", encoding="utf-8-sig", newline="") as f:
         w = _csv.writer(f)
         w.writerow(["expression", "gold", "bert_pred", "llm_pred", "catalog_gap"])
@@ -735,8 +743,8 @@ def _out_suffix(use_llm):
 
 def _write_outputs(results, use_bert, use_llm):
     suf = _out_suffix(use_llm)
-    out_json = OUT_JSON.replace(".json", f"{suf}.json")
-    out_report = OUT_REPORT.replace(".md", f"{suf}.md")
+    out_json = OUT_JSON.with_name(f"{OUT_JSON.stem}{suf}.json")
+    out_report = OUT_REPORT.with_name(f"{OUT_REPORT.stem}{suf}.md")
     with open(out_json, "w", encoding="utf-8") as f:
         json.dump(results, f, ensure_ascii=False, indent=2)
 
@@ -777,7 +785,7 @@ def _write_outputs(results, use_bert, use_llm):
         b = results["llm_gemini"]
         lines.append(f"| LLM (Gemini, variant={results['config']['llm_variant']}) | "
                      f"{b['multi_example_f1']*100:.1f} | {b['multi_macro_f1']*100:.1f} |\n")
-    lines.append(f"\n_Per-class tables are in {out_json}._\n")
+    lines.append(f"\n_Per-class tables are in {out_json.name}._\n")
     open(out_report, "w", encoding="utf-8").write("".join(lines))
     print(f"\nwrote {out_report}, {out_json}")
 

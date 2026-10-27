@@ -51,13 +51,13 @@ import os
 from pathlib import Path
 
 # Paths resolve from the location of this file, so the pipeline runs from any working directory.
-# Repository layout: ACT files at the top, scripts in pipeline/, generated artifacts in generated/.
+# Repository layout: ACT files at the top, scripts in pipeline/, generated artifacts in artifacts/.
 PIPELINE_DIR = Path(__file__).resolve().parent
 REPO_DIR = PIPELINE_DIR.parent
 
 TAXONOMY_TTL   = Path(os.environ.get("ACT_TAXONOMY_TTL",   REPO_DIR / "act_taxonomy.ttl"))
 MULTILABEL_TTL = Path(os.environ.get("ACT_MULTILABEL_TTL", REPO_DIR / "act_multilabel.ttl"))
-LLM_CATALOG_MD = Path(os.environ.get("ACT_LLM_CATALOG_MD", REPO_DIR / "generated" / "act_llm_catalog.md"))
+LLM_CATALOG_MD = Path(os.environ.get("ACT_LLM_CATALOG_MD", REPO_DIR / "artifacts" / "act_llm_catalog.md"))
 LLM_CACHE      = Path(os.environ.get("ACT_LLM_CACHE",      REPO_DIR / "cache" / "llm_cache.jsonl"))
 
 # --- Gemini (Google AI Studio free tier) ---
@@ -70,10 +70,9 @@ GEMINI_TEMPERATURE = 0.0        # 0 for single-shot; raise if SELF_CONSISTENCY_N
 LLM_BACKOFF_BASE = 4.2
 LLM_MAX_RETRIES  = 6
 LLM_BACKOFF_CAP  = 60.0
-LLM_CACHE = "llm_cache.jsonl"   # memoize successful Gemini calls (key: model|expr). 429/
-                                # network failures are NOT cached, so they retry next run.
-                                # Delete the file to reset. Lets rate-limited runs resume
-                                # cheaply and makes eval reproducible.
+# LLM_CACHE (defined above) memoizes successful Gemini calls (key: model|expr). 429/network
+# failures are NOT cached, so they retry next run. Delete the file to reset. Lets rate-limited
+# runs resume cheaply and makes the evaluation reproducible.
 
 # --- Tohoku BERT centroid ---
 BERT_MODEL         = "cl-tohoku/bert-base-japanese-v3"
@@ -176,6 +175,7 @@ class GeminiClassifier:
     def _append_cache(self, key, labels, sc):
         self._cache[key] = (labels, sc)
         if self.cache_path:
+            Path(self.cache_path).parent.mkdir(parents=True, exist_ok=True)
             with open(self.cache_path, "a", encoding="utf-8") as f:
                 f.write(json.dumps({"k": key, "labels": labels, "sc": sc},
                                    ensure_ascii=False) + "\n")

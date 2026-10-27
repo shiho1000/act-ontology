@@ -1,4 +1,3 @@
-# シャープで始まる行はコメント（メモ）になります
 # 特定のファイルを無視
 # secret.txt
 
@@ -11,6 +10,9 @@ benchmark/data/
 cache/
 *.jsonl
 
-# 特定の拡張子を持つファイルをすべて無視
-#*.log
-#*.exe
+# Secrets
+.env
+ 
+# Python and Jupyter
+__pycache__/
+.ipynb_checkpoints/

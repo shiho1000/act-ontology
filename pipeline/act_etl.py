@@ -1,31 +1,27 @@
 """
-act_etl.py 
+act_etl.py
 
-Pipeline:  normalized CSV (long format, one row per event-entity link)
-             -> group by event
-             -> ActionType classification  [STUB in this skeleton]
-             -> Entity resolution (Dewey -> Wikidata -> Literal fallback)
+Pipeline:  CSV exported from the COTEN History DB (long format, one row per event-entity link)
+             -> group the rows by event
+             -> classify each distinct action expression (act_classifiers.py:
+                lookup index -> LLM + BERT centroid, with confidence and band)
+             -> entity resolution (Compound Record -> Wikidata -> COTEN entity ID;
+                otherwise literal fallback) and entity linking (owl:sameAs to Wikidata)
              -> ACT Turtle output
 
-Design decisions :
-  * Classification unit is the unique Action *expression* (type-level). EventLabel
-    is NOT read by the classifier. Context/token-level is future work only.
+Design decisions:
+  * The classification unit is the distinct action *expression* (type-level). The label
+    of the event is NOT read by the classifier. Classification with context is future work.
   * Entity identity is deterministic: canonical URI = entity_<base32(sha1(key))[:8]>.
-    Dewey UUID is the 1st resolution key but is NEVER emitted (it dissolves into
-    the hash). Wikidata is the 2nd key, emitted as owl:sameAs. Name-only matches
-    are dropped -> surface form falls back to has*Label literals.
-  * hasActionType is 0..* (multilabel). Per-assignment source/confidence/signals
-    are attached with RDF-star (added at the classification step, stubbed here).
-  * Dependency-free (Python stdlib only), to match the project environment.
-
-This skeleton intentionally leaves the classification cascade as a stub so the
-structural spine (roles, patient/theme split, sub-events, entity resolution,
-deterministic URIs, literal fallbacks) can be reviewed and iterated first.
+    The COTEN entity ID (Dewey) is used only as a key and is never written to the graph.
+    Wikidata IDs are always written as owl:sameAs. Participants without any identifier
+    keep their names as has*Label literals (no name-based merging).
+  * hasActionType is 0..* (multilabel). Confidence and band are written to the review CSV.
+    RDF-star annotations are available but off by default (EMIT_RDF_STAR_ANNOTATIONS).
+  * Python standard library only in this file; act_classifiers.py needs rdflib, and
+    torch/transformers for the BERT classifier.
 
 ============================================================================
-Steps for running the pipeline
-============================================================================
-
 Steps for running the pipeline
 ============================================================================
 
